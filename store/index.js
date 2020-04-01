@@ -137,7 +137,7 @@ export const state = () => ({
             value : 1,
             type  : 'wild',
             title : 'Wild Property',
-            color : ['brown', 'blue']
+            color : 'brown blue'
         },
         {
             value : 1,
@@ -161,7 +161,7 @@ export const state = () => ({
             value : 1,
             type  : 'wild',
             title : 'Wild Property',
-            color : ['black', 'blue']
+            color : 'black blue'
         },
         
         {
@@ -192,19 +192,19 @@ export const state = () => ({
             value : 4,
             type  : 'property',
             title : 'Pacific Beach',
-            color : 'navy'
+            color : 'cyan'
         },
         {
             value : 4,
             type  : 'property',
             title : 'Balboa Park',
-            color : 'navy'
+            color : 'cyan'
         },
         {
             value : 4,
             type  : 'wild',
             title : 'Wild Property',
-            color : ['navy', 'green']
+            color : ['cyan', 'green']
         },
         {
             value : 4,
@@ -331,20 +331,27 @@ export const state = () => ({
             type         : 'action',
             title        : "Just Say No",
             description : "Cancel an Action card played against you.",
-            color        : 'blue',
+            color        : 'violet',
         },
         {
             value        : 4,
             type         : 'action',
             title        : "Just Say No",
             description : "Cancel an Action card played against you.",
-            color        : 'blue',
+            color        : 'violet',
         },
         {
             value        : 4,
             type         : 'action',
             title        : "Just Say No",
             description : "Cancel an Action card played against you.",
+            color        : 'violet',
+        },
+        {
+            value        : 5,
+            type         : 'action',
+            title        : "Deal Breaker",
+            description : "Steal a complete property color, including any buildings, from any player. Place it in front of you.",
             color        : 'steelblue',
         },
         {
@@ -352,14 +359,7 @@ export const state = () => ({
             type         : 'action',
             title        : "Deal Breaker",
             description : "Steal a complete property color, including any buildings, from any player. Place it in front of you.",
-            color        : 'violet',
-        },
-        {
-            value        : 5,
-            type         : 'action',
-            title        : "Deal Breaker",
-            description : "Steal a complete property color, including any buildings, from any player. Place it in front of you.",
-            color        : 'violet',
+            color        : 'steelblue',
         },
         {
             value        : 2,
@@ -637,7 +637,7 @@ export const state = () => ({
             title        : "Rent",
             description : "Choose one of these colors. All Players pay you rent for all properties you own in that color.",
             color        : 'grey',
-            set          : ['navy', 'green']
+            set          : ['cyan', 'green']
         },
         {
             value        : 1,
@@ -645,7 +645,7 @@ export const state = () => ({
             title        : "Rent",
             description : "Choose one of these colors. All Players pay you rent for all properties you own in that color.",
             color        : 'grey',
-            set          : ['navy', 'green']
+            set          : ['cyan', 'green']
         },
         {
             value        : 1,
