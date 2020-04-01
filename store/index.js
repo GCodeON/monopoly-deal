@@ -1,7 +1,9 @@
 import Vue from 'vue'
 
 export const state = () => ({
-    used: [],
+    used    : [],
+    player1 : [],
+    player2 : [],
     deck: [
         {
             type  : 'money',
@@ -697,11 +699,21 @@ export const mutations = {
             Vue.set(state.deck, i, state.deck[randomIndex]);
             Vue.set(state.deck, randomIndex, temp);
           }
+    },
+    initialDeal(state) {
+        for(var i = 0; i < 5; i++) {
+           state.player1.push(state.deck.pop());
+           state.player2.push(state.deck.pop());
+        }
     }
 }
 
 export const actions = {
    shuffle(context) {
        context.commit('shuffleDeck');
-   }
+   },
+   deal(context) {
+        context.commit('initialDeal');
+    },
+
 }

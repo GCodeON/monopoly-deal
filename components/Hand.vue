@@ -3,9 +3,9 @@
       <div class="hand">
         <section>
           <div class="stack stack-fanout" :class="{ active: isActive }" >
-            <img src="img/3.png" />
-            <img src="img/1.png" />
-            <img src="img/2.png" />
+            <!-- <div v-for="(card, index) in cards" class="card" :key="index">
+              {{ card.title }}
+            </div> -->
           </div>
         </section>
       </div>
@@ -16,6 +16,9 @@ import { mapGetters } from 'vuex'
 
 
 export default {
+  props: [
+    'cards'
+  ],
   components: {
 
   },
@@ -52,18 +55,19 @@ export default {
 	width: 400px;
 	padding: 0;
 	position: relative;
-	max-width: 100%;
+  max-width: 100%;
+  
+  .card {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    outline: 1px solid transparent;
+  }
 }
 
-.stack img {
-	max-width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
-	outline: 1px solid transparent;
-}
 
 .stack img:last-child {
 	position: relative;
