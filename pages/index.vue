@@ -17,6 +17,7 @@
         </span>
       </div>
     </div>
+	<hand :cards="player2"></hand>
   </div>
 </template>
 
@@ -61,7 +62,9 @@ export default {
 
   .deck {
     margin-left: 30px;
-    padding-top: 30px;
+	padding-top: 30px;
+	position: relative;
+	display: inline-block;
   }
 
   .card {

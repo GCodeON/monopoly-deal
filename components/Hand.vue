@@ -3,9 +3,9 @@
       <div class="hand">
         <section>
           <div class="stack stack-fanout" :class="{ active: isActive }" >
-            <!-- <div v-for="(card, index) in cards" class="card" :key="index">
+            <div v-for="(card, index) in cards" class="card" :key="index" :class="card.color">
               {{ card.title }}
-            </div> -->
+            </div>
           </div>
         </section>
       </div>
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
     };
   },
   mounted() {
@@ -33,13 +33,12 @@ export default {
     }, 1000);
   },
   computed: {
-    ...mapGetters([])
 
   },
   methods: {
     fanout() {
        this.isActive = true;
-    }
+    },
   }
 };
 </script>
@@ -58,18 +57,21 @@ export default {
   max-width: 100%;
   
   .card {
-    max-width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    outline: 1px solid transparent;
+    max-width          : 100%;
+    width              : 100%;
+    position           : absolute;
+    top                : 0;
+    left               : 0;
+    -webkit-transition : all 0.3s;
+    transition         : all 0.3s;
+    outline            : 1px solid transparent;
+    border             : 1px solid black;
+    height             : 400px;
   }
 }
 
 
-.stack img:last-child {
+.stack .card:last-child {
 	position: relative;
 }
 
@@ -85,20 +87,30 @@ export default {
 
 
 /* Fan out */
-.stack-fanout img:first-child,
-.stack-fanout img:nth-child(2) {
+.stack-fanout .card:first-child,
+.stack-fanout .card:nth-child(2) {
 	transform: scale(0.8);
 }
 
-.stack-fanout.active img:nth-child(3) {
+.stack-fanout.active .card:nth-child(3) {
 	transform: scale(0.9);
 }
 
-.stack-fanout.active img:first-child {
-	transform: rotate(-10deg) translateX(-25%) scale(0.8);
+.stack-fanout.active .card:first-child {
+	transform: rotate(-20deg) translateX(-45%) scale(0.8);
 }
 
-.stack-fanout.active img:nth-child(2) {
+.stack-fanout.active .card:nth-child(2) {
+	transform: rotate(-10deg) translateX(-25%) scale(0.8);
+}
+.stack-fanout.active .card:nth-child(3) {
+	transform: rotate(0deg) translateX(0%) scale(0.8);
+}
+
+.stack-fanout.active .card:nth-child(4) {
 	transform: rotate(10deg) translateX(25%) scale(0.8);
+}
+.stack-fanout.active .card:nth-child(5) {
+	transform: rotate(20deg) translateX(45%) scale(0.8);
 }
 </style>
