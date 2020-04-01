@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 export const state = () => ({
     used: [],
     deck: [
@@ -683,9 +685,23 @@ export const state = () => ({
 export const getters = {
     getDeck: (state) => {
         return state.deck;
-      }
+    }
 }
-  
+
 export const mutations = {
-   
+    shuffleDeck(state) {
+        for(let i = state.deck.length - 1; i > 0; i--) {
+            let randomIndex = Math.floor(Math.random() * i);
+            
+            let temp = state.deck[i];
+            Vue.set(state.deck, i, state.deck[randomIndex]);
+            Vue.set(state.deck, randomIndex, temp);
+          }
+    }
+}
+
+export const actions = {
+   shuffle(context) {
+       context.commit('shuffleDeck');
+   }
 }

@@ -1,17 +1,18 @@
 <template>
   <div class="container">
-    <!-- <hand></hand> -->
+    <hand></hand>
       <div class="card" v-for="(card, index) in deck">
         <span class="card__suit card__suit--top">{{ card.value}}</span>
         <span class="card__number">{{ card.type }} </span>
         <span class="card__suit card__suit--bottom">{{ card.value }}</span>
       </div>
+      <button @click="shuffle()"> Shuffle</button>
   </div>
 </template>
 
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 import Hand from '~/components/Hand'
 import Deck from '~/components/Deck'
@@ -24,18 +25,20 @@ export default {
   },
   data() {
     return {
-
+      
     };
   },
   mounted() {
-    console.log('deck', this.deck);
+
   },
   computed:
     mapState([
       'deck'
     ]),
   methods: {
-   
+    ...mapMutations({
+      shuffle: 'shuffleDeck'
+    })
   }
 };
 </script>
@@ -87,10 +90,12 @@ html, body, #app {
 .speed-buttons {
   text-align: center;
   padding-top: 30px;
+
+  .button {
+    height: 2.50em;
+  }
 }
-.speed-buttons .button {
-  height: 2.50em;
-}
+
 
 .main-buttons {
   display: block;
@@ -124,6 +129,7 @@ html, body, #app {
   border-radius: 2px;
   position: relative;
   border: 1px solid black;
+  box-shadow: 2px 3px 5px 0 rgba(0,0,0,.2);
 }
 
 .card__suit {
