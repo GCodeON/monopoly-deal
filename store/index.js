@@ -2,8 +2,16 @@ import Vue from 'vue'
 
 export const state = () => ({
     used    : [],
-    player1 : [],
-    player2 : [],
+    player1 : {
+        hand: [],
+        sets: [],
+        bank: []
+    },
+    player2 : {
+        hand: [],
+        sets: [],
+        bank: []
+    },
     deck: [
         {
             type  : 'money',
@@ -702,9 +710,12 @@ export const mutations = {
     },
     initialDeal(state) {
         for(var i = 0; i < 5; i++) {
-           state.player1.push(state.deck.pop());
-           state.player2.push(state.deck.pop());
+           state.player1.hand.push(state.deck.pop());
+           state.player2.hand.push(state.deck.pop());
         }
+    },
+    draw(state, player, num) {
+        player.hand.push(state.deck.slice(-num))
     }
 }
 

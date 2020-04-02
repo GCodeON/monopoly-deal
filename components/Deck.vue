@@ -1,17 +1,31 @@
 <template>
-      <div class="deck">
-
-      </div>
+    <div class="deck">
+      <!-- <div class="card" 
+        v-for="(card, index) in cards" 
+        :class="card.color" 
+        :key="`key-${index}`">
+        <span class="corner top">
+          {{ card.value}}
+        </span>
+        <span class="number">
+          {{ card.type }}
+        </span>
+        <span class="corner bottom">
+          {{ card.value }}
+        </span>
+      </div> -->
+    </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+
 
 
 export default {
-  components: {
-
-  },
+  props: [
+    'cards'
+  ],
   data() {
     return {
      
@@ -31,59 +45,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hand {
-  animation: 3s appear;
-  margin: auto;
-}
-
-.stack {
-	margin: 20px auto;
-	width: 400px;
-	padding: 0;
-	position: relative;
-	max-width: 100%;
-}
-
-.stack img {
-	max-width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	-webkit-transition: all 0.3s;
-	transition: all 0.3s;
-	outline: 1px solid transparent;
-}
-
-.stack img:last-child {
-	position: relative;
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
+  .deck {
+    margin-left: 30px;
+    padding-top: 30px;
+    position: relative;
+    display: inline-block;
   }
-  100% {
-    opacity: 1;
-  }
-}
+//   .card {
+//     width         : 75px;
+//     height        : 100px;
+//     float         : left;
+//     margin-right  : 5px;
+//     margin-bottom : 5px;
+//     border-radius : 2px;
+//     position      : relative;
+//     border        : 1px solid black;
+//     box-shadow    : 2px 3px 5px 0 rgba(0,0,0,.2);
 
+//     .corner {
+//       width   : 100%;
+//       display : block;
+//     }
 
+//     .top {
+//       text-align   : left;
+//       padding-left : 5px;
+//     }
 
-/* Fan out */
-.stack-fanout img:first-child,
-.stack-fanout img:nth-child(2) {
-	transform: scale(0.8);
-}
+//     .bottom {
+//       position     : absolute;
+//       bottom       : 0px;
+//       text-align   : left;
+//       transform    : rotate(180deg);
+//       padding-left : 5px;
+//     }
 
-.stack-fanout.active img:nth-child(3) {
-	transform: scale(0.9);
-}
+//     .number {
+//       width      : 100%;
+//       position   : absolute;
+//       top        : 38%;
+//       text-align : center;
+//     }
+// }
 
-.stack-fanout.active img:first-child {
-	transform: rotate(-10deg) translateX(-25%) scale(0.8);
-}
-
-.stack-fanout.active img:nth-child(2) {
-	transform: rotate(10deg) translateX(25%) scale(0.8);
-}
 </style>
