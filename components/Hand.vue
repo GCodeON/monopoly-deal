@@ -75,9 +75,16 @@ export default {
 			left               : 0;
 			-webkit-transition : all 0.3s;
 			transition         : all 0.3s;
-			outline            : 1px solid transparent;
-			border             : 1px solid black;
-			height             : 400px;
+			border             : 1px solid white;
+			height             : 500px;
+			border-radius      : 25px;
+			box-shadow         : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			transition         : all 0.7s;
+			&:hover {
+				z-index: 10;
+				transform: scale(1.2) !important;
+			}
+
 
 			&:last-child {
 				position: relative;
@@ -102,10 +109,11 @@ export default {
 				padding-left : 5px;
 			}
 			.center {
-				width      : 100%;
-				position   : absolute;
-				top        : 38%;
-				text-align : center;
+				width          : 100%;
+				position       : absolute;
+				top            : 38%;
+				text-align     : center;
+				text-transform : uppercase;
 			}
 		}
 	}
@@ -132,20 +140,20 @@ export default {
 	}
 
 	.stack-fanout.active .card:first-child {
-		transform: rotate(-20deg) translateX(-45%) scale(0.8);
+		transform: rotate(-25deg) translateX(-55%) scale(0.8);
 	}
 
 	.stack-fanout.active .card:nth-child(2) {
-		transform: rotate(-10deg) translateX(-25%) scale(0.8);
+		transform: rotate(-15deg) translateX(-35%) scale(0.8);
 	}
 	.stack-fanout.active .card:nth-child(3) {
 		transform: rotate(0deg) translateX(0%) scale(0.8);
 	}
 
 	.stack-fanout.active .card:nth-child(4) {
-		transform: rotate(10deg) translateX(25%) scale(0.8);
+		transform: rotate(15deg) translateX(35%) scale(0.8);
 	}
 	.stack-fanout.active .card:nth-child(5) {
-		transform: rotate(20deg) translateX(45%) scale(0.8);
+		transform: rotate(25deg) translateX(55%) scale(0.8);
 	}
 </style>
