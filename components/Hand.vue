@@ -1,24 +1,22 @@
 <template>
       <div class="hand">
-        <section>
           <div class="stack stack-fanout" 
 		  	:class="{ active: isActive }" >
             <div class="card"
 				v-for="(card, index) in player.hand" 
 				:key="index" 
 				:class="card.color">
-            <span class="corner top">
-				{{ card.value}}
-			</span>
-			<span class="center">
-				{{ card.type }}
-			</span>
-			<span class="corner bottom">
-				{{ card.value }}
-			</span>
+				<span class="corner top">
+					{{ card.value}}
+				</span>
+				<span class="center">
+					{{ card.type }}
+				</span>
+				<span class="corner bottom">
+					{{ card.value }}
+				</span>
             </div>
           </div>
-        </section>
       </div>
 </template>
 
@@ -69,14 +67,14 @@ export default {
 	
 		.card {
 			max-width          : 100%;
-			width              : 100%;
+			width              : 300px;
 			position           : absolute;
 			top                : 0;
 			left               : 0;
 			-webkit-transition : all 0.3s;
 			transition         : all 0.3s;
-			border             : 1px solid white;
-			height             : 500px;
+			border             : 5px solid white;
+			height             : 400px;
 			border-radius      : 25px;
 			box-shadow         : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			transition         : all 0.7s;
