@@ -59,34 +59,26 @@ export default {
 	}
 
 	.stack {
-		margin    : 20px auto;
-		width     : 400px;
-		padding   : 0;
-		position  : relative;
-		max-width : 100%;
-	
+		display: flex;
 		.card {
-			max-width          : 100%;
-			width              : 300px;
-			position           : absolute;
-			top                : 0;
-			left               : 0;
-			-webkit-transition : all 0.3s;
-			transition         : all 0.3s;
-			border             : 5px solid white;
-			height             : 400px;
-			border-radius      : 25px;
-			box-shadow         : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			transition         : all 0.7s;
+			height        : 350px;
+			width         : 250px;
+			position      : relative;
+			transition    : all 0.3s;
+			border        : 3px solid white;
+			border-radius : 25px;
+			box-shadow    : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			transition    : all 0.7s;
+			margin: 0 1em;
 			&:hover {
 				z-index: 10;
 				transform: scale(1.2) !important;
 			}
 
 
-			&:last-child {
-				position: relative;
-			}
+			// &:last-child {
+			// 	position: relative;
+			// }
 			
 			.corner {
 				width   : 100%;
@@ -127,31 +119,31 @@ export default {
 
 
 
-	/* Fan out */
-	.stack-fanout .card:first-child,
-	.stack-fanout .card:nth-child(2) {
-		transform: scale(0.8);
-	}
+	// /* Fan out */
+	// .stack-fanout .card:first-child,
+	// .stack-fanout .card:nth-child(2) {
+	// 	transform: scale(0.8);
+	// }
 
-	.stack-fanout.active .card:nth-child(3) {
-		transform: scale(0.9);
-	}
+	// .stack-fanout.active .card:nth-child(3) {
+	// 	transform: scale(0.9);
+	// }
 
-	.stack-fanout.active .card:first-child {
-		transform: rotate(-25deg) translateX(-55%) scale(0.8);
-	}
+	// .stack-fanout.active .card:first-child {
+	// 	transform: rotate(-25deg) translateX(-55%) scale(0.8);
+	// }
 
-	.stack-fanout.active .card:nth-child(2) {
-		transform: rotate(-15deg) translateX(-35%) scale(0.8);
-	}
-	.stack-fanout.active .card:nth-child(3) {
-		transform: rotate(0deg) translateX(0%) scale(0.8);
-	}
+	// .stack-fanout.active .card:nth-child(2) {
+	// 	transform: rotate(-15deg) translateX(-35%) scale(0.8);
+	// }
+	// .stack-fanout.active .card:nth-child(3) {
+	// 	transform: rotate(0deg) translateX(0%) scale(0.8);
+	// }
 
-	.stack-fanout.active .card:nth-child(4) {
-		transform: rotate(15deg) translateX(35%) scale(0.8);
-	}
-	.stack-fanout.active .card:nth-child(5) {
-		transform: rotate(25deg) translateX(55%) scale(0.8);
-	}
+	// .stack-fanout.active .card:nth-child(4) {
+	// 	transform: rotate(15deg) translateX(35%) scale(0.8);
+	// }
+	// .stack-fanout.active .card:nth-child(5) {
+	// 	transform: rotate(25deg) translateX(55%) scale(0.8);
+	// }
 </style>

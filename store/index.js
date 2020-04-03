@@ -714,8 +714,8 @@ export const mutations = {
            state.player2.hand.push(state.deck.pop());
         }
     },
-    draw(state, player, num) {
-        player.hand.push(state.deck.slice(-num))
+    draw(state) {
+        state.player1.hand.push(state.deck.pop());
     }
 }
 
@@ -725,6 +725,9 @@ export const actions = {
    },
    deal(context) {
         context.commit('initialDeal');
+    },
+    draw(context) {
+        context.commit('draw');
     },
 
 }

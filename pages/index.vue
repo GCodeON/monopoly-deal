@@ -38,7 +38,7 @@ export default {
       'shuffle',
       'deal',
       'draw'
-    ])
+	])
   }
 };
 </script>
