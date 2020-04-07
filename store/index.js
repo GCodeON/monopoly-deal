@@ -1,17 +1,21 @@
 import Vue from 'vue'
 
 export const state = () => ({
-    used    : [],
-    player1 : {
-        hand: [],
-        sets: [],
-        bank: []
-    },
-    player2 : {
-        hand: [],
-        sets: [],
-        bank: []
-    },
+    gameOver    : false,
+    discardPile : [],
+    turn        : null,
+    players   : [
+        {
+            hand       : [],
+            properties : [],
+            money      : []
+        },
+        {
+            hand       : [],
+            properties : [],
+            money      : []
+        },
+    ],
     deck: [
         {
             type  : 'money',
@@ -710,12 +714,20 @@ export const mutations = {
     },
     initialDeal(state) {
         for(var i = 0; i < 5; i++) {
-           state.player1.hand.push(state.deck.pop());
-           state.player2.hand.push(state.deck.pop());
+            for(var player = 0; player < state.players.length; player++) {
+                state.players[player].hand.push(state.deck.pop());
+            }
         }
     },
     draw(state) {
-        state.player1.hand.push(state.deck.pop());
+        state.players[1].hand.push(state.deck.pop());
+    },
+    startGame(state) {
+        // while(!state.gameOver) {
+        //     for(var player = 0; player < state.players.length; player++) {
+        //         state.turn = player;
+        //     }
+        // }
     }
 }
 
@@ -729,5 +741,7 @@ export const actions = {
     draw(context) {
         context.commit('draw');
     },
-
+    start(context) {
+        context.commit('startGame');
+    }
 }

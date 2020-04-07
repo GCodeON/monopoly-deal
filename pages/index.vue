@@ -1,8 +1,10 @@
 <template>
   <div class="game">
-    <hand :player="player1"></hand>
-    <deck :cards="deck"></deck>
-    <hand :player="player2"></hand>
+	<player :data="players[0]" role="user"></player>
+	<div class="middle">
+		<deck :cards="deck"></deck>
+	</div>
+	<player :data="players[1]" role="opponent"></player>
   </div>
 </template>
 
@@ -10,13 +12,15 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 
-import Hand from '~/components/Hand'
+import Player from '~/components/Player'
 import Deck from '~/components/Deck'
+import Discard from '~/components/Discard'
+
 
 
 export default {
   components: {
-    Hand, Deck
+	Deck, Discard, Player
   },
   data() {
     return {
@@ -30,14 +34,15 @@ export default {
   computed:
     mapState([
 	  'deck',
-	  'player1',
-	  'player2'
+	  'players',
+	  'turn',
+	  'discardPile'
     ]),
   methods: {
       ...mapActions([
       'shuffle',
       'deal',
-      'draw'
+	  'draw'
 	])
   }
 };
@@ -47,6 +52,6 @@ export default {
 	.game {
 		display: grid;
 		grid-template-rows: 1fr 1fr 1fr;
+		max-height: 100vh;
 	}
-
 </style>

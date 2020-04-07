@@ -1,9 +1,9 @@
 <template>
-      <div class="hand">
+      <div class="hand"> 
           <div class="stack stack-fanout" 
 		  	:class="{ active: isActive }" >
             <div class="card"
-				v-for="(card, index) in player.hand" 
+				v-for="(card, index) in cards" 
 				:key="index" 
 				:class="card.color">
 				<span class="corner top">
@@ -26,7 +26,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   props: [
-    'player'
+    'cards'
   ],
   components: {
 
@@ -37,36 +37,36 @@ export default {
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.fanout();
-    }, 1000);
+    // setTimeout(() => {
+    //   this.fanout();
+    // }, 1000);
   },
   computed: {
 
   },
   methods: {
-    fanout() {
-       this.isActive = true;
-    },
+    // fanout() {
+    //    this.isActive = true;
+    // },
   }
 };
 </script>
 
 <style lang="scss" scoped>
 	.hand {
-		animation: 3s appear;
-		margin: auto;
+		animation : 3s appear;
+		margin    : auto;
 	}
 
 	.stack {
 		display: flex;
 		.card {
-			height        : 350px;
-			width         : 250px;
+			height        : 200px;
+			width         : 150px;
 			position      : relative;
 			transition    : all 0.3s;
 			border        : 3px solid white;
-			border-radius : 25px;
+			border-radius : 15px;
 			box-shadow    : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			transition    : all 0.7s;
 			margin: 0 1em;
@@ -74,18 +74,13 @@ export default {
 				z-index: 10;
 				transform: scale(1.2) !important;
 			}
-
-
-			// &:last-child {
-			// 	position: relative;
-			// }
 			
 			.corner {
 				width   : 100%;
 				display : block;
 			}
 			.top, .bottom, .center {
-				font-size: 3em;
+				font-size: 1.5em;
 			}
 			.top {
 				text-align   : left;

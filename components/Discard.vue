@@ -42,8 +42,8 @@ export default {
     background-color : white;
     border           : 1px solid black;
     border-radius    : 25px;
-    width            : 150px;
-    height           : 200px;
+    width            : 300px;
+    height           : 400px;
   }
 
 </style>
