@@ -30,19 +30,25 @@ export default {
   mounted() {
 	  this.shuffle();
 	  this.deal();
+	  this.start();
+	  this.nextTurn();
+
   },
   computed:
     mapState([
 	  'deck',
 	  'players',
 	  'turn',
-	  'discardPile'
+	  'discardPile',
+	  'active'
     ]),
   methods: {
       ...mapActions([
       'shuffle',
       'deal',
-	  'draw'
+	  'draw',
+	  'start',
+	  'nextTurn'
 	])
   }
 };

@@ -8,6 +8,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { Draggable } from '@shopify/draggable';
 
 import Hand from '~/components/Hand'
 import Bank from '~/components/Bank'
