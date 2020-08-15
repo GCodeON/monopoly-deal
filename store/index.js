@@ -723,8 +723,10 @@ export const mutations = {
             }
         }
     },
-    draw(state) {
-        state.active.hand.push(state.deck.pop());
+    draw(state, cards) {
+        for(var i = 0; i < cards; i++) {
+            state.active.hand.push(state.deck.pop());
+        }
     },
     startGame(state) {
         state.start = true;
@@ -762,5 +764,7 @@ export const actions = {
     nextTurn(context) {
         context.commit('nextTurn');
         context.commit('startTurn');
-    }
+        context.commit('draw', 2);
+    },
+    
 }
