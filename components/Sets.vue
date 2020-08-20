@@ -10,7 +10,6 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { Draggable } from 'vuedraggable';
 
 
 export default {
@@ -18,7 +17,6 @@ export default {
     'data'
   ],
   components: {
-    Draggable
   },
   data() {
     return {

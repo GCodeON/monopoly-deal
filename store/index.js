@@ -12,21 +12,7 @@ export const state = () => ({
             properties : [],
             money      : [],
             sets: [ 
-                {
-                    color: 'red',
-                    cards: [],
-                    id: 0
-                },
-                {
-                    color: 'Sienna',
-                    cards: [],
-                    id: 1
-                },
-                {
-                    color: 'yellow',
-                    cards: [],
-                    id: 3
-                }
+
             ]
 
         },
@@ -36,21 +22,7 @@ export const state = () => ({
             properties : [],
             money      : [],
             sets: [ 
-                {
-                    color: 'red',
-                    cards: [],
-                    id: 0
-                },
-                {
-                    color: 'Sienna',
-                    cards: [],
-                    id: 1
-                },
-                {
-                    color: 'yellow',
-                    cards: [],
-                    id: 3
-                }
+
             ]
         },
     ],
