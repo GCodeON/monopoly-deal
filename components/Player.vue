@@ -53,7 +53,7 @@ export default {
 		grid-template-rows    : 1fr 1fr;
 		&.user {
 			grid-template-columns : 10% 1fr;
-			grid-template-areas: "bank cards" "sets sets";
+			grid-template-areas   : "bank cards" "sets sets";
 		}
 		&.opponent {
 			grid-template-columns : 1fr 10%;

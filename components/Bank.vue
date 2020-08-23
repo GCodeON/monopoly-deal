@@ -1,6 +1,11 @@
 <template>
     <div class="bank pile">
       <h2>Bank</h2>
+        <draggable group="hand" >
+          <transition-group>
+
+          </transition-group>
+        </draggable>
     </div>
 </template>
 

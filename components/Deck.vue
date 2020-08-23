@@ -1,5 +1,5 @@
 <template>
-    <div class="deck" @click="draw">
+    <div class="deck pile" @click="draw">
       <div class="stack">
       </div>
     </div>
@@ -35,15 +35,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .deck {
-    position         : relative;
-    margin           : 0 auto;
-    // display          : flex;
-    background-color : white;
-    border           : 1px solid black;
-    border-radius    : 25px;
-    width            : 150px;
-    height           : 200px;
-  }
 
 </style>
