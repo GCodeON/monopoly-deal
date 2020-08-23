@@ -1,7 +1,7 @@
 <template>
       <div class="hand"> 
 		<div class="stack" :class="{ active: isActive }" >
-		  <draggable v-model="cards" draggable=".card" >
+		  <draggable group="hand" >
    			<transition-group>
 				<div v-for="card in cards"
 					:key="card"
@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 
 export default {
   props: [
-    'cards'
+    'cards', 'role'
   ],
   components: {
 

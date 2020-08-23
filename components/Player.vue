@@ -1,6 +1,6 @@
 <template>
       <div class="player" :class="role"> 
-        <hand :cards="data.hand" class="cards"></hand>
+        <hand :cards="data.hand" :role="role" class="cards" ></hand>
 		<bank :data="data.money" class="money"></bank>
 		<sets :data="data.sets" class="properties"></sets>
       </div>
