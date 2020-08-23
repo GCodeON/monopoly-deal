@@ -1,7 +1,7 @@
 <template>
       <div class="hand"> 
 		<div class="stack" :class="{ active: isActive }" >
-		  <draggable group="hand" >
+		  <draggable group="card" >
    			<transition-group>
 				<div v-for="card in cards"
 					:key="card"

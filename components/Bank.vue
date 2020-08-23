@@ -1,9 +1,9 @@
 <template>
-    <div class="bank pile">
+    <div class="bank">
       <h2>Bank</h2>
-        <draggable group="hand" >
+        <draggable group="card" >
           <transition-group>
-
+            <div class="pile"></div>
           </transition-group>
         </draggable>
     </div>
