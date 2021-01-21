@@ -5,25 +5,23 @@ export const state = () => ({
     discardPile : [],
     turn        : 0,
     active      : null,
+    cardCount   : 0,
     players     : [
         {
             id         : 1,
             hand       : [],
             properties : [],
             money      : [],
-            sets: [ 
-
-            ]
-
+            name       : [],
+            sets       : []
         },
         {
             id         : 2,
             hand       : [],
             properties : [],
             money      : [],
-            sets: [ 
-
-            ]
+            name       : [],
+            sets       : []
         },
     ],
     deck: [
@@ -751,6 +749,12 @@ export const mutations = {
         } else {
             state.active =  state.players[0];
         }
+    },
+    cardCount(state) {
+        this.cardCount++;
+        if(this.cardCount == 3) {
+            // context.commit('nextTurn');
+        }
     }
 }
 
@@ -767,7 +771,7 @@ export const actions = {
     start(context) {
         context.commit('startGame');
     },
-    nextTurn(context) {
+    nexTurn(context) {
         context.commit('nextTurn');
         context.commit('startTurn');
         context.commit('draw', 2);

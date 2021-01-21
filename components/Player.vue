@@ -1,8 +1,9 @@
 <template>
       <div class="player" :class="role"> 
-        <hand :cards="data.hand" :role="role" class="cards" ></hand>
+        <!-- <hand :cards="data.hand" :role="role" class="cards" ></hand> -->
+		<hand :cards="data.hand" :role="role" class="cards" ></hand>
 		<bank :data="data.money" class="money"></bank>
-		<sets :data="data.sets" class="properties"></sets>
+		<sets :data="data.sets" :name="data.name" class="properties"></sets>
       </div>
 </template>
 
@@ -62,5 +63,6 @@ export default {
 	}
 	.cards, .money, .properties {
 		border: 1px grey dashed;
+		width: 100%;
 	}
 </style>

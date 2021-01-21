@@ -1,9 +1,8 @@
 <template>
     <div class="bank">
-      <h2>Bank</h2>
-        <draggable group="card" >
+        <draggable group="card" class="drag-bank">
           <transition-group>
-            <div class="pile"></div>
+
           </transition-group>
         </draggable>
     </div>
@@ -15,7 +14,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
-    ''
+    'money'
   ],
   data() {
     return {
@@ -31,15 +30,16 @@ export default {
   },
   methods: {
     ...mapActions([
-        'draw'
+        // 'draw'
     ]),
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .bank {
-    
+  .drag-bank {
+    width  : 100%;
+    height : 100%;
   }
 
 </style>

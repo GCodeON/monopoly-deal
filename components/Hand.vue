@@ -1,25 +1,25 @@
 <template>
       <div class="hand"> 
-		<div class="stack" :class="{ active: isActive }" >
-		  <draggable group="card" >
+		<!-- <div class="stack" :class="{ active: isActive }" > -->
+		  <draggable group="card" draggable=".card" @onEnd="cardCount">
    			<transition-group>
-				<div v-for="card in cards"
-					:key="card"
+				<div v-for="(card, index) in cards"
+					:key="index"
 					class="card"
 					:class="card.color">
-					<span class="corner top">
+					<span class="corner top" v-if="card.value">
 						{{ card.value}}
 					</span>
-					<span class="center">
+					<span class="center" v-if="card.type">
 						{{ card.type }}
 					</span>
-					<span class="corner bottom">
+					<span class="corner bottom" v-if="card.value" >
 						{{ card.value }}
 					</span>
 				</div>
 			</transition-group>
 		  </draggable>
-          </div>
+          <!-- </div> -->
       </div>
 </template>
 
@@ -40,7 +40,9 @@ export default {
     };
   },
   mounted() {
-
+	  cardCount() {
+		  console.log("card count");
+	  }
   },
   computed: {
 
