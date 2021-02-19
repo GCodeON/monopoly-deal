@@ -736,9 +736,7 @@ export const mutations = {
         state.start = true;
     },
     nextTurn(state) {
-        if(state.start) {
-            state.turn++;
-        }
+        state.turn++;
     },
     startTurn(state) {
         
@@ -755,6 +753,11 @@ export const mutations = {
         if(this.cardCount == 3) {
             // context.commit('nextTurn');
         }
+    },
+    updateHand(state, {value, id}) {
+        console.log("before", state, id);
+        state.players[id].hand = value;
+        console.log("state", state, value);
     }
 }
 
@@ -771,7 +774,7 @@ export const actions = {
     start(context) {
         context.commit('startGame');
     },
-    nexTurn(context) {
+    nextTurn(context) {
         context.commit('nextTurn');
         context.commit('startTurn');
         context.commit('draw', 2);

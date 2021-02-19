@@ -1,10 +1,10 @@
 <template>
   <div class="game">
-	<player :data="players[0]" role="user"></player>
+	<Player :id="0" role="user" />
 	<div class="middle">
-		<deck :cards="deck"></deck>
+		<Deck :cards="deck"></Deck>
 	</div>
-	<player :data="players[1]" role="opponent"></player>
+	<Player :id="1" role="opponent" />
   </div>
 </template>
 

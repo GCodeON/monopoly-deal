@@ -1,8 +1,8 @@
 <template>
       <div class="hand"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
-		  <draggable group="card" draggable=".card" @onEnd="cardCount">
-   			<transition-group>
+		  <!-- <draggable group="card" draggable=".card"> -->
+		<draggable group="card" draggable=".card" v-model="cards">
 				<div v-for="(card, index) in cards"
 					:key="index"
 					class="card"
@@ -17,7 +17,6 @@
 						{{ card.value }}
 					</span>
 				</div>
-			</transition-group>
 		  </draggable>
           <!-- </div> -->
       </div>
@@ -29,7 +28,7 @@
 
 export default {
   props: [
-    'cards', 'role'
+    'id', 'role'
   ],
   components: {
 
@@ -40,15 +39,25 @@ export default {
     };
   },
   mounted() {
-	  cardCount() {
-		  console.log("card count");
-	  }
+	
   },
   computed: {
 
+	cards: {
+		get() {
+			return this.$store.state.players[this.id].hand;
+		},
+		set(value) {
+			this.$store.commit('updateHand', { value: value, id: this.id})
+		}
+	}
+
+
   },
   methods: {
-
+	  onChange() {
+		  console.log('onchange fired');
+	  }
   }
 };
 </script>

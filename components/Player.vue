@@ -1,9 +1,9 @@
 <template>
       <div class="player" :class="role"> 
         <!-- <hand :cards="data.hand" :role="role" class="cards" ></hand> -->
-		<hand :cards="data.hand" :role="role" class="cards" ></hand>
-		<bank :data="data.money" class="money"></bank>
-		<sets :data="data.sets" :name="data.name" class="properties"></sets>
+		<hand :id="id" :role="role" class="cards" ></hand>
+		<!-- <bank :data="data.money" class="money"></bank>
+		<sets :data="data.sets" :name="data.name" class="properties"></sets> -->
       </div>
 </template>
 
@@ -17,7 +17,7 @@ import Sets from '~/components/Sets'
 
 export default {
   props: [
-	  'data', 'role'
+	  'id', 'role'
   ],
   components: {
 	  Hand, Bank, Sets
