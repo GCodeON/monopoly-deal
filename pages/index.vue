@@ -40,10 +40,11 @@ export default {
 	  'players',
 	  'turn',
 	  'discardPile',
-	  'active'
+	  'active',
+	  'cardCount'
     ]),
   methods: {
-      ...mapActions([
+    ...mapActions([
       'shuffle',
       'deal',
 	  'draw',

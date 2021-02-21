@@ -1,7 +1,7 @@
 <template>
       <div class="hand"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
-			<draggable group="card" draggable=".card" v-model="cards">
+			<draggable group="card" draggable=".card" v-model="cards" @end="moveCards">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -22,7 +22,8 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+
 
 
 export default {
@@ -54,6 +55,12 @@ export default {
 
   },
   methods: {
+	...mapActions([
+	  'updateCount'
+	]),
+	moveCards() {
+		this.updateCount();
+	}
 
   }
 };
