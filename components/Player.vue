@@ -1,9 +1,8 @@
 <template>
       <div class="player" :class="role"> 
-        <!-- <hand :cards="data.hand" :role="role" class="cards" ></hand> -->
 		<hand :id="id" :role="role" class="cards" ></hand>
-		<!-- <bank :data="data.money" class="money"></bank>
-		<sets :data="data.sets" :name="data.name" class="properties"></sets> -->
+		<bank :id="id" class="money"></bank>
+		<!-- <sets :id="id" class="properties"></sets> -->
       </div>
 </template>
 

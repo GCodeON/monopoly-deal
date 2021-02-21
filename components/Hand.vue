@@ -1,23 +1,22 @@
 <template>
       <div class="hand"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
-		  <!-- <draggable group="card" draggable=".card"> -->
-		<draggable group="card" draggable=".card" v-model="cards">
-				<div v-for="(card, index) in cards"
-					:key="index"
-					class="card"
-					:class="card.color">
-					<span class="corner top" v-if="card.value">
-						{{ card.value}}
-					</span>
-					<span class="center" v-if="card.type">
-						{{ card.type }}
-					</span>
-					<span class="corner bottom" v-if="card.value" >
-						{{ card.value }}
-					</span>
-				</div>
-		  </draggable>
+			<draggable group="card" draggable=".card" v-model="cards">
+					<div v-for="(card, index) in cards"
+						:key="index"
+						class="card"
+						:class="card.color">
+						<span class="corner top" v-if="card.value">
+							{{ card.value}}
+						</span>
+						<span class="center" v-if="card.type">
+							{{ card.type }}
+						</span>
+						<span class="corner bottom" v-if="card.value" >
+							{{ card.value }}
+						</span>
+					</div>
+			</draggable>
           <!-- </div> -->
       </div>
 </template>
@@ -55,9 +54,7 @@ export default {
 
   },
   methods: {
-	  onChange() {
-		  console.log('onchange fired');
-	  }
+
   }
 };
 </script>

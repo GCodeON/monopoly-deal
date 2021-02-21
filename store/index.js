@@ -755,9 +755,10 @@ export const mutations = {
         }
     },
     updateHand(state, {value, id}) {
-        console.log("before", state, id);
         state.players[id].hand = value;
-        console.log("state", state, value);
+    },
+    updateBank(state, {value, id}) {
+        state.players[id].money = value;
     }
 }
 

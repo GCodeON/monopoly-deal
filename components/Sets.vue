@@ -4,9 +4,9 @@
           <!-- <draggable v-for="(set, index) in data" :key="index" class="set" v-model="data" group="sets" @start="drag=true" @end="drag=false">
               <div class="pile" v-if="set.color">{{ set.color}}</div>
           </draggable> -->
-        <draggable group="card" draggable=".card" :list="data" @change="log">
+        <draggable group="card" draggable=".card">
           <transition-group>
-              <div v-for="card in data"
+              <div v-for="card in cards"
                 :key="card"
                 class="card"
                 :class="card.color">
@@ -32,7 +32,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
-    'data', 'name'
+    'id',
   ],
   components: {
   },
@@ -45,15 +45,21 @@ export default {
    
   },
   computed: {
+    cards: {
+		get() {
+			return this.$store.state.players[this.id].sets;
+		},
+		set(value) {
+			this.$store.commit('updateSets', { value: value, id: this.id})
+		}
+	}
   
 
   },
   methods: {
     // ...mapActions([
     // ]),
-    log(evt) {
-      console.log("on log", evt);
-    }
+
   }
 };
 </script>
