@@ -1,7 +1,7 @@
 <template>
       <div class="cards" :class="role"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
-			<draggable group="card" class="check-hand" draggable=".card" v-model="cards" :move="checkMove" @start="onStart()">
+			<draggable group="card" class="check-hand" draggable=".card" v-model="cards" :move="checkMove">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -62,24 +62,15 @@ export default {
 	
 		if(event.from.className === 'check-hand') {
 			if(event.to.className === 'check-hand') {
+				console.log("no hand to hand");
 				return false;
 			}
 		} 
-		console.log(event.from.className, event.to.className, event);
-		if (event.from.className === 'drag-bank') {
-			console.log("from bank", event.to.className);
-			if(event.to.className === 'check-hand') {
-				console.log("no bank to hand");
-				return false;
-			}
-			
-
-		} 
-		// this.onTurn();
+		this.onTurn();
 	},
-	onStart(evt) {
-		console.log("on start", evt);
-	}
+	// onStart(evt) {
+	// 	console.log("on start", evt);
+	// }
 
   }
 };

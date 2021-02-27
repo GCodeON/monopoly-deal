@@ -49,19 +49,17 @@ export default {
   },
   methods: {
     ...mapActions([
-        // 'draw'
+        'onTurn'
     ]),
     checkMove(event) {
+      // this.onTurn(event);
 
-		console.log(event.from.className, event.to.className, event);
 		if (event.from.className === 'drag-bank') {
-			console.log("from bank", event.to.className);
 			if(event.to.className === 'check-hand') {
 				console.log("no bank to hand");
 				return false;
 			}
-			
-
+		  // this.onTurn();
 		} 
 		// this.onTurn();
 	},
