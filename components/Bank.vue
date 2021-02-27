@@ -1,6 +1,6 @@
 <template>
     <div class="bank">
-        <draggable group="card" class="drag-bank" draggable=".card"  v-model="cards">
+        <draggable group="card" class="drag-bank" draggable=".card"  v-model="cards" :move="checkMove">
           <div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -51,6 +51,20 @@ export default {
     ...mapActions([
         // 'draw'
     ]),
+    checkMove(event) {
+
+		console.log(event.from.className, event.to.className, event);
+		if (event.from.className === 'drag-bank') {
+			console.log("from bank", event.to.className);
+			if(event.to.className === 'check-hand') {
+				console.log("no bank to hand");
+				return false;
+			}
+			
+
+		} 
+		// this.onTurn();
+	},
   }
 };
 </script>

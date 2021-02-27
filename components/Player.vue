@@ -1,6 +1,6 @@
 <template>
       <div class="player" :class="role"> 
-		<hand :id="id" :role="role" class="cards" ></hand>
+		<hand :id="id" :role="role" class="hand" ></hand>
 		<bank :id="id" class="money"></bank>
 		<!-- <sets :id="id" class="properties"></sets> -->
       </div>
@@ -39,8 +39,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	.cards {
-		grid-area: cards;
+	.hand {
+		grid-area: hand;
 	}
 	.money {
 		grid-area: bank;
@@ -53,14 +53,14 @@ export default {
 		grid-template-rows    : 1fr 1fr;
 		&.user {
 			grid-template-columns : 25% 1fr;
-			grid-template-areas   : "bank cards" "sets sets";
+			grid-template-areas   : "bank hand" "sets sets";
 		}
 		&.opponent {
 			grid-template-columns : 1fr 25%;
-			grid-template-areas: "sets sets" "cards bank";
+			grid-template-areas: "sets sets" "hand bank";
 		}
 	}
-	.cards, .money, .properties {
+	.hand, .money, .properties {
 		border: 1px grey dashed;
 		width: 100%;
 	}
