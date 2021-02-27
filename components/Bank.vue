@@ -52,17 +52,15 @@ export default {
         'onTurn'
     ]),
     checkMove(event) {
-      // this.onTurn(event);
 
-		if (event.from.className === 'drag-bank') {
-			if(event.to.className === 'check-hand') {
-				console.log("no bank to hand");
-				return false;
-			}
-		  // this.onTurn();
-		} 
-		// this.onTurn();
-	},
+      if (event.from.className === 'drag-bank') {
+        if(event.to.className === 'check-hand') {
+          console.log("no bank to hand");
+          return false;
+        }
+      } 
+
+    },
   }
 };
 </script>

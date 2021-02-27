@@ -734,19 +734,21 @@ export const mutations = {
     },
     startGame(state) {
         state.start = true;
+        state.active = state.players[1];
     },
     nextTurn(state) {
         state.turn++;
     },
-    startTurn(state) {
+    setActive(state) {
         
         let turn = state.turn % state.players.length;
-
-        if(!turn == 0) {
-            state.active = state.players[1];
-        } else {
-            state.active =  state.players[0];
-        }
+        console.log("set active", turn)
+        state.active = state.players[turn];
+        // if(!turn == 0) {
+        //     state.active = state.players[1];
+        // } else {
+        //     state.active =  state.players[0];
+        // }
     },
     updateCount(state) {
         state.cardCount++;        
@@ -754,6 +756,8 @@ export const mutations = {
     checkCount(state) {
         if(state.cardCount >= 2) {
             this.commit("nextTurn");
+            this.commit('setActive');
+            this.commit('draw', 2);
             state.cardCount = 0;
         } else {
             this.commit('updateCount');
@@ -779,11 +783,10 @@ export const actions = {
     },
     start(context) {
         context.commit('startGame');
+
     },
     nextTurn(context) {
         context.commit('nextTurn');
-        context.commit('startTurn');
-        context.commit('draw', 2);
     },
     onTurn(context, event) {
         context.commit('checkCount');
