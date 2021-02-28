@@ -1,14 +1,13 @@
 import Vue from 'vue'
 
 export const state = () => ({
-    start       : false,
-    discardPile : [],
-    turn        : 0,
-    active      : null,
-    cardCount   : 0,
-    players     : [
+    start     : false,
+    turn      : 0,
+    cardCount : 0,
+    discarded : [],
+    active    : null,
+    players   : [
         {
-            id         : 1,
             hand       : [],
             properties : [],
             money      : [],
@@ -16,7 +15,6 @@ export const state = () => ({
             sets       : []
         },
         {
-            id         : 2,
             hand       : [],
             properties : [],
             money      : [],
@@ -740,15 +738,8 @@ export const mutations = {
         state.turn++;
     },
     setActive(state) {
-        
         let turn = state.turn % state.players.length;
-        console.log("set active", turn)
         state.active = state.players[turn];
-        // if(!turn == 0) {
-        //     state.active = state.players[1];
-        // } else {
-        //     state.active =  state.players[0];
-        // }
     },
     updateCount(state) {
         state.cardCount++;        
@@ -768,6 +759,10 @@ export const mutations = {
     },
     updateBank(state, {value, id}) {
         state.players[id].money = value;
+    },
+    playCard(state, {value} ) {
+        console.log("card played", value);
+        state.discarded = value
     }
 }
 

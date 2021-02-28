@@ -70,7 +70,7 @@ export default {
     width  : 100%;
     height : 100%;
   }
-    .deck {
+  .deck {
     position         : relative;
     margin           : 0 auto;
     // display          : flex;

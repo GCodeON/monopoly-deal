@@ -2,7 +2,8 @@
   <div class="game">
 	<Player :id="0" role="user" />
 	<div class="middle">
-		<Deck :cards="deck"></Deck>
+		<!-- <Deck :cards="deck"></Deck> -->
+		<Discard></Discard>
 	</div>
 	<Player :id="1" role="opponent" />
   </div>
@@ -39,7 +40,7 @@ export default {
 	  'deck',
 	  'players',
 	  'turn',
-	  'discardPile',
+	  'discarded',
 	  'active',
 	  'cardCount'
     ]),
