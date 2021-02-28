@@ -83,6 +83,12 @@ export default {
 					return false;
 				}
 			}
+			if(event.to.className === 'sets-stack') { 
+				if(event.draggedContext.element.type === 'money' || event.draggedContext.element.type === 'action') {
+					console.log("no property in the bank");
+					return false;
+				}
+			}
 		} 
 		this.onTurn();
 	},

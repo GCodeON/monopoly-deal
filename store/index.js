@@ -760,6 +760,9 @@ export const mutations = {
     updateBank(state, {value, id}) {
         state.players[id].money = value;
     },
+    updateSets(state, {value, id}) {
+        state.players[id].sets = value;
+    },
     playCard(state, {value} ) {
         console.log("card played", value);
         state.discarded = value

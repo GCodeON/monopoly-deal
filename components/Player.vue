@@ -2,7 +2,7 @@
       <div class="player" :class="role"> 
 		<hand :id="id" :role="role" class="hand" ></hand>
 		<bank :id="id" class="money"></bank>
-		<!-- <sets :id="id" class="properties"></sets> -->
+		<sets :id="id" class="properties"></sets>
       </div>
 </template>
 
