@@ -58,6 +58,10 @@ export default {
           console.log("no bank to hand");
           return false;
         }
+        if(event.to.className === 'discard-stack') {
+          console.log("no bank to discard");
+          return false;
+        }
       } 
 
     },
