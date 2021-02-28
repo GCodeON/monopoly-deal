@@ -6,13 +6,13 @@
 						:key="index"
 						class="card"
 						:class="card.color">
-						<span class="corner top" v-if="card.value">
+						<span class="corner top">
 							{{ card.value}}
 						</span>
 						<span class="center" v-if="card.type">
 							{{ card.type }}
 						</span>
-						<span class="corner bottom" v-if="card.value" >
+						<span class="corner bottom" >
 							{{ card.value }}
 						</span>
 					</div>
@@ -69,8 +69,11 @@ export default {
 
 			if(event.to.className === 'discard-stack') {
 				// console.log("hand to discard", event);
-				if(event.draggedContext.element.type !== 'action') {
+				if(event.draggedContext.element.type === 'action') {
 					// console.log("not an action card");
+					alert(event.draggedContext.element.description);
+					// execute action
+				} else {
 					return false;
 				}
 			}
