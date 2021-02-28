@@ -61,15 +61,22 @@ export default {
 	checkMove(event) {
 	
 		if(event.from.className === 'check-hand') {
+
 			if(event.to.className === 'check-hand') {
-				console.log("no hand to hand");
+				// console.log("no hand to hand");
 				return false;
 			}
 
 			if(event.to.className === 'discard-stack') {
-				console.log("hand to discard", event);
+				// console.log("hand to discard", event);
 				if(event.draggedContext.element.type !== 'action') {
-					console.log("not an action card");
+					// console.log("not an action card");
+					return false;
+				}
+			}
+			if(event.to.className === 'drag-bank') { 
+				if(event.draggedContext.element.type === 'property' || event.draggedContext.element.type === 'wild') {
+					console.log("no property in the bank");
 					return false;
 				}
 			}
