@@ -1,7 +1,7 @@
 <template>
     <div class="discard">
       <div class="stack">
-        <draggable group="card" class="drag-discard" draggable=".card"  v-model="cards" :move="checkMove">
+        <draggable group="card" class="discard-stack" draggable=".card"  v-model="cards" :move="checkMove">
           <div v-for="(card, index) in cards"
 						:key="index"
 						class="card"

@@ -65,6 +65,14 @@ export default {
 				console.log("no hand to hand");
 				return false;
 			}
+
+			if(event.to.className === 'discard-stack') {
+				console.log("hand to discard", event);
+				if(event.draggedContext.element.type !== 'action') {
+					console.log("not an action card");
+					return false;
+				}
+			}
 		} 
 		this.onTurn();
 	},
