@@ -1,6 +1,12 @@
 <template>
     <div class="sets">
-			<draggable group="card" class="sets-stack" draggable=".card" v-model="cards" :move="checkMove">
+			<draggable 
+        class="sets-stack" 
+        draggable=".card" 
+        v-model="cards" 
+        group="card" 
+        :move="checkMove"
+        :disabled="!enabled">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -31,7 +37,8 @@ export default {
   },
   data() {
     return {
-      drag: false
+      enabled: true
+      
     };
   },
   mounted() {

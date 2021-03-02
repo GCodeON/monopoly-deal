@@ -736,6 +736,8 @@ export const mutations = {
     },
     nextTurn(state) {
         state.turn++;
+        this.commit('setActive');
+        this.commit('draw', 2);
     },
     setActive(state) {
         let turn = state.turn % state.players.length;
@@ -747,8 +749,6 @@ export const mutations = {
     checkCount(state) {
         if(state.cardCount >= 2) {
             this.commit("nextTurn");
-            this.commit('setActive');
-            this.commit('draw', 2);
             state.cardCount = 0;
         } else {
             this.commit('updateCount');
