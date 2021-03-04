@@ -735,6 +735,11 @@ export const mutations = {
         state.active = state.players[1];
     },
     nextTurn(state) {
+        if(state.active.hand.length > 7) {
+          console.log("player must discard card");  
+          alert('Player can only hold up to 7 cards at one time!');
+          
+        }
         state.turn++;
         this.commit('setActive');
         this.commit('draw', 2);
@@ -788,6 +793,14 @@ export const actions = {
     },
     onTurn(context, event) {
         context.commit('checkCount');
+    },
+    onAction(context, action) {
+        console.log('action', context, action);
+
+        if(action.title == 'Pass Go') {
+            context.commit('draw', 2);
+        }
+        // context.commit('onAction');
     }
     
 }

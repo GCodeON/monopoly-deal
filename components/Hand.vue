@@ -56,7 +56,8 @@ export default {
   },
   methods: {
 	...mapActions([
-	  'onTurn'
+	  'onTurn',
+	  'onAction'
 	]),
 	checkMove(event) {
 	
@@ -73,6 +74,7 @@ export default {
 					// console.log("not an action card");
 					alert(event.draggedContext.element.description);
 					// execute action
+					this.onAction(event.draggedContext.element);
 				} else {
 					return false;
 				}
