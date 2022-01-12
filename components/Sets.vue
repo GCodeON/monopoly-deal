@@ -46,15 +46,13 @@ export default {
   },
   computed: {
     cards: {
-		get() {
-			return this.$store.state.players[this.id].sets;
-		},
-		set(value) {
-			this.$store.commit('updateSets', { value: value, id: this.id})
-		}
-	}
-  
-
+      get() {
+        return this.$store.state.players[this.id].sets;
+      },
+      set(value) {
+        this.$store.commit('updateSets', { value: value, id: this.id})
+      }
+    }
   },
   methods: {
     // ...mapActions([

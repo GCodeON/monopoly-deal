@@ -1,7 +1,7 @@
 <template>
       <div class="cards" :class="role"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
-			<draggable group="card" class="check-hand" draggable=".card" v-model="cards" :move="checkMove">
+			<draggable group="card" class="check-hand" draggable=".card" v-model="cards" :move="checkMove"  :disabled="!enabled">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -28,7 +28,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
-    'id', 'role'
+    'id', 'role', 'enabled'
   ],
   components: {
 

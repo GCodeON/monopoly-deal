@@ -800,6 +800,9 @@ export const actions = {
         if(action.title == 'Pass Go') {
             context.commit('draw', 2);
         }
+        if(action.title == 'Rent') {
+            console.log("get rent");
+        }
         // context.commit('onAction');
     }
     

@@ -1,7 +1,7 @@
 <template>
       <div class="player" :class="role"> 
 		<button @click="nextTurn">End Turn</button>
-		<hand :id="id" :role="role" class="hand" ></hand>
+		<hand :id="id" :role="role" :enabled="enabled" class="hand" ></hand>
 		<bank :id="id" class="money"></bank>
 		<sets :id="id" class="properties"></sets>
       </div>
