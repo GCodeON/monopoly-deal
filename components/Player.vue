@@ -1,6 +1,6 @@
 <template>
-      <div class="player" :class="role"> 
-		<button  @click="nextTurn">End Turn</button>
+      <div class="player"> 
+		<button @click="nextTurn">End Turn</button>
 		<hand :id="id" :role="role" class="hand" ></hand>
 		<bank :id="id" class="money"></bank>
 		<sets :id="id" class="properties"></sets>
@@ -17,7 +17,7 @@ import Sets from '~/components/Sets'
 
 export default {
   props: [
-	  'id', 'role'
+	  'id', 'role', 'active'
   ],
   components: {
 	  Hand, Bank, Sets

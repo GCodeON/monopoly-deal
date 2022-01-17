@@ -1,11 +1,16 @@
 <template>
-  <div class="game">
-	<Player :id="0" role="user" />
+  <div class="game" v-if="gameStarted">
+	<Player
+		v-for="(player, index) in players" 
+		:key="index"  
+		:id="player.id"
+		:class="player.role"
+	/>
 	<div class="middle">
 		<!-- <Deck :cards="deck"></Deck> -->
 		<Discard></Discard>
 	</div>
-	<Player :id="1" role="opponent" />
+
   </div>
 </template>
 
@@ -28,10 +33,9 @@ export default {
   },
   mounted() {
 	  this.shuffle();
+      this.start();
 	  this.deal();
-	  this.start();
 	  this.nextTurn();
-
   },
   computed:
     mapState([
@@ -40,7 +44,8 @@ export default {
 	  'turn',
 	  'discarded',
 	  'active',
-	  'cardCount'
+	  'cardCount',
+	  'gameStarted'
     ]),
   methods: {
     ...mapActions([
@@ -56,8 +61,18 @@ export default {
 
 <style lang="scss" scoped>
 	.game {
-		display: grid;
-		grid-template-rows: 1fr 1fr 1fr;
-		max-height: 100vh;
+		display             : grid;
+		grid-template-rows  : 1fr 1fr 1fr;
+		max-height          : 100vh;
+		grid-template-areas : "user" "middle" "opponent";
+	}
+	.user {
+		grid-area: user;
+	}
+	.middle {
+		grid-area : middle;
+	}
+	.opponent {
+		grid-area: opponent;
 	}
 </style>

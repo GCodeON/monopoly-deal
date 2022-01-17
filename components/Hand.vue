@@ -4,8 +4,7 @@
 			<draggable 
 				group="card" 
 				class="check-hand" 
-				draggable=".card"
-				:animation="200" 
+				draggable=".card" 
 				v-model="cards" 
 				:move="checkMove">
 					<div v-for="(card, index) in cards"

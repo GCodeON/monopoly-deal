@@ -1,6 +1,11 @@
 <template>
     <div class="bank">
-        <draggable group="card" class="drag-bank" draggable=".card"  v-model="cards" :move="checkMove">
+        <p class="total">Total: {{ bankTotal }}</p>
+        <draggable group="card" 
+          class="drag-bank" 
+          draggable=".card"  
+          v-model="cards" 
+          :move="checkMove">
           <div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -15,7 +20,6 @@
 							{{ card.value }}
 						</span>
 					</div>
-          <p class="total">Total: {{ bankTotal }}</p>
         </draggable>
     </div>
 </template>

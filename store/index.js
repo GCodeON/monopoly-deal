@@ -1,11 +1,11 @@
 import Vue from 'vue'
 
 export const state = () => ({
-    start     : false,
-    turn      : 0,
-    cardCount : 0,
-    discarded : [],
-    active    : null,
+    gameStarted : false,
+    turn        : 0,
+    cardCount   : 0,
+    discarded   : [],
+    active      : null,
     players   : [
         {
             hand       : [],
@@ -13,7 +13,9 @@ export const state = () => ({
             money      : [],
             name       : [],
             sets       : [],
-            bankTotal  : ''
+            bankTotal  : '0',
+            turn       : null,
+            role       : 'opponent'
         },
         {
             hand       : [],
@@ -21,7 +23,9 @@ export const state = () => ({
             money      : [],
             name       : [],
             sets       : [],
-            bankTotal  : ''
+            bankTotal  : '0',
+            turn       : null,
+            role       : 'user'
         },
     ],
     deck: [
@@ -733,8 +737,10 @@ export const mutations = {
         }
     },
     startGame(state) {
-        state.start = true;
-        state.active = state.players[1];
+        state.gameStarted = true;
+        // state.active = state.players[1];
+        this.commit('setPlayers');
+        this.commit('setActive');
     },
     nextTurn(state) {
         if(state.active.hand.length > 7) {
@@ -745,6 +751,11 @@ export const mutations = {
         state.turn++;
         this.commit('setActive');
         this.commit('draw', 2);
+    },
+    setPlayers(state) {
+        state.players.map((player, idx) => {
+            player.id = idx;
+        })
     },
     setActive(state) {
         let turn = state.turn % state.players.length;
@@ -793,7 +804,6 @@ export const actions = {
     },
     start(context) {
         context.commit('startGame');
-
     },
     nextTurn(context) {
         context.commit('nextTurn');
