@@ -1,7 +1,13 @@
 <template>
       <div class="cards" :class="role"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
-			<draggable group="card" class="check-hand" draggable=".card" v-model="cards" :move="checkMove"  :disabled="!enabled">
+			<draggable 
+				group="card" 
+				class="check-hand" 
+				draggable=".card"
+				:animation="200" 
+				v-model="cards" 
+				:move="checkMove">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -64,14 +70,14 @@ export default {
 		if(event.from.className === 'check-hand') {
 
 			if(event.to.className === 'check-hand') {
-				// console.log("no hand to hand");
+				console.log("no hand to hand");
 				return false;
 			}
 
 			if(event.to.className === 'discard-stack') {
-				// console.log("hand to discard", event);
+				console.log("hand to discard", event);
 				if(event.draggedContext.element.type === 'action') {
-					// console.log("not an action card");
+					console.log("not an action card");
 					alert(event.draggedContext.element.description);
 					// execute action
 					this.onAction(event.draggedContext.element);
@@ -94,9 +100,9 @@ export default {
 		} 
 		this.onTurn();
 	},
-	// onStart(evt) {
-	// 	console.log("on start", evt);
-	// }
+	onStart(evt) {
+		console.log("on start", evt);
+	}
 
   }
 };

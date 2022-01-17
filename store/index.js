@@ -12,14 +12,16 @@ export const state = () => ({
             properties : [],
             money      : [],
             name       : [],
-            sets       : []
+            sets       : [],
+            bankTotal  : ''
         },
         {
             hand       : [],
             properties : [],
             money      : [],
             name       : [],
-            sets       : []
+            sets       : [],
+            bankTotal  : ''
         },
     ],
     deck: [
@@ -764,6 +766,11 @@ export const mutations = {
     },
     updateBank(state, {value, id}) {
         state.players[id].money = value;
+
+        state.players[id].bankTotal = state.players[id].money.reduce((sum, card) => {
+            return sum + card.value;
+        }, 0);
+
     },
     updateSets(state, {value, id}) {
         state.players[id].sets = value;

@@ -5,8 +5,7 @@
         draggable=".card" 
         v-model="cards" 
         group="card" 
-        :move="checkMove"
-        :disabled="!enabled">
+        :move="checkMove">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -60,16 +59,16 @@ export default {
 
     checkMove(event) {
 
-      // if (event.from.className === 'drag-bank') {
-      //   if(event.to.className === 'check-hand') {
-      //     console.log("no bank to hand");
-      //     return false;
-      //   }
-      //   if(event.to.className === 'discard-stack') {
-      //     console.log("no bank to discard");
-      //     return false;
-      //   }
-      // } 
+      if (event.from.className === 'drag-bank') {
+        if(event.to.className === 'check-hand') {
+          console.log("no bank to hand");
+          return false;
+        }
+        if(event.to.className === 'discard-stack') {
+          console.log("no bank to discard");
+          return false;
+        }
+      } 
 
     },
 

@@ -16,6 +16,9 @@
 						</span>
 					</div>
         </draggable>
+        <div>
+          <p>Total: </p>
+        </div>
     </div>
 </template>
 
