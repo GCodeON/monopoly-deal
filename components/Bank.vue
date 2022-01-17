@@ -15,10 +15,8 @@
 							{{ card.value }}
 						</span>
 					</div>
+          <p class="total">Total: {{ bankTotal }}</p>
         </draggable>
-        <div>
-          <p>Total: </p>
-        </div>
     </div>
 </template>
 
@@ -47,6 +45,11 @@ export default {
       set(value) {
         this.$store.commit('updateBank', { value: value, id: this.id})
       }
+    },
+    bankTotal: {
+       get() {
+        return this.$store.state.players[this.id].bankTotal;
+      },
     }
 
   },
@@ -86,6 +89,9 @@ export default {
     border-radius    : 25px;
     width            : 300px;
     height           : 400px;
+  }
+  .total {
+    color: black;
   }
 
 </style>

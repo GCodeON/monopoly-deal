@@ -17,8 +17,6 @@ import Player from '~/components/Player'
 import Deck from '~/components/Deck'
 import Discard from '~/components/Discard'
 
-
-
 export default {
   components: {
 	Deck, Discard, Player
