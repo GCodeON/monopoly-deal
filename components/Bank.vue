@@ -30,7 +30,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
-    'id'
+    'player'
   ],
   data() {
     return {
@@ -38,21 +38,21 @@ export default {
     };
   },
   mounted() {
-   
+    
   },
   computed: {
   
     cards: {
       get() {
-        return this.$store.state.players[this.id].money;
+        return this.$store.state.players[this.player.id].money;
       },
       set(value) {
-        this.$store.commit('updateBank', { value: value, id: this.id})
+        this.$store.commit('updateBank', { value: value, id: this.player.id})
       }
     },
     bankTotal: {
        get() {
-        return this.$store.state.players[this.id].bankTotal;
+        return this.$store.state.players[this.player.id].bankTotal;
       },
     }
 

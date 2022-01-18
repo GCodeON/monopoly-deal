@@ -1,5 +1,5 @@
 <template>
-      <div class="cards" :class="role"> 
+      <div class="cards" :class="player.role"> 
 		<!-- <div class="stack" :class="{ active: isActive }" > -->
 			<draggable 
 				group="card" 
@@ -33,7 +33,8 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
-    'id', 'role', 'enabled'
+	// 'id', 'role', 'enabled'
+	'player'
   ],
   components: {
 
@@ -50,10 +51,10 @@ export default {
 
 	cards: {
 		get() {
-			return this.$store.state.players[this.id].hand;
+			return this.$store.state.players[this.player.id].hand;
 		},
 		set(value) {
-			this.$store.commit('updateHand', { value: value, id: this.id})
+			this.$store.commit('updateHand', { value: value, id: this.player.id})
 		}
 	}
 

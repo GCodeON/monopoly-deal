@@ -30,7 +30,7 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
-    'id',
+    'player',
   ],
   components: {
   },
@@ -46,10 +46,10 @@ export default {
   computed: {
     cards: {
       get() {
-        return this.$store.state.players[this.id].sets;
+        return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
-        this.$store.commit('updateSets', { value: value, id: this.id})
+        this.$store.commit('updateSets', { value: value, id: this.player.id})
       }
     }
   },

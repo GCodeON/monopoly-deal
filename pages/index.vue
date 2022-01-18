@@ -1,10 +1,10 @@
 <template>
   <div class="game" v-if="gameStarted">
 	<Player
-		v-for="(player, index) in players" 
+		v-for="(data, index) in players" 
 		:key="index"  
-		:id="player.id"
-		:class="player.role"
+		:player="data"
+		:class="data.role"
 	/>
 	<div class="middle">
 		<!-- <Deck :cards="deck"></Deck> -->

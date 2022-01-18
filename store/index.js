@@ -749,6 +749,10 @@ export const mutations = {
           
         }
         state.turn++;
+
+        if(state.active.turn == true || state.active.turn == null) {
+            state.active.turn = false;
+        }
         this.commit('setActive');
         this.commit('draw', 2);
     },
@@ -760,6 +764,8 @@ export const mutations = {
     setActive(state) {
         let turn = state.turn % state.players.length;
         state.active = state.players[turn];
+        
+        state.active.turn = true;
     },
     updateCount(state) {
         state.cardCount++;        

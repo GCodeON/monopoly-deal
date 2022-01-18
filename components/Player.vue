@@ -1,9 +1,9 @@
 <template>
       <div class="player"> 
-		<button @click="nextTurn">End Turn</button>
-		<hand :id="id" :role="role" class="hand" ></hand>
-		<bank :id="id" class="money"></bank>
-		<sets :id="id" class="properties"></sets>
+		<button v-if="player.turn" @click="nextTurn">End Turn</button>
+		<hand :player="player" class="hand" ></hand>
+		<bank :player="player" class="money"></bank>
+		<sets :player="player" class="properties"></sets>
       </div>
 </template>
 
@@ -17,7 +17,8 @@ import Sets from '~/components/Sets'
 
 export default {
   props: [
-	  'id', 'role', 'active'
+	//   'id', 'role', 'active'
+	'player'
   ],
   components: {
 	  Hand, Bank, Sets
