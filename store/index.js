@@ -14,7 +14,7 @@ export const state = () => ({
             name       : [],
             sets       : [],
             bankTotal  : '0',
-            turn       : null,
+            active     : null,
             role       : 'opponent'
         },
         {
@@ -24,7 +24,7 @@ export const state = () => ({
             name       : [],
             sets       : [],
             bankTotal  : '0',
-            turn       : null,
+            active     : null,
             role       : 'user'
         },
     ],
@@ -748,8 +748,8 @@ export const mutations = {
           alert('Player can only hold up to 7 cards at one time!');
           
         }
-        if(state.players[state.activePlayer].turn == true || state.players[state.activePlayer].turn == null) {
-            state.players[state.activePlayer].turn = false;
+        if(state.players[state.activePlayer].active == true || state.players[state.activePlayer].active == null) {
+            state.players[state.activePlayer].active = false;
         }
         state.turnCount++;
 
@@ -765,7 +765,7 @@ export const mutations = {
         let setTurn = state.turnCount % state.players.length;
         state.activePlayer = state.players[setTurn].id;
         
-        state.players[state.activePlayer].turn = true;
+        state.players[state.activePlayer].active = true;
     },
     updateCount(state) {
         state.cardCount++;        

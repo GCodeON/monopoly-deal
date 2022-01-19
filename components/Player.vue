@@ -1,6 +1,6 @@
 <template>
       <div class="player"> 
-		<button v-if="player.turn" @click="nextTurn">End Turn</button>
+		<button v-if="player.active" @click="nextTurn">End Turn</button>
 		<hand :player="player" class="hand" ></hand>
 		<bank :player="player" class="money"></bank>
 		<sets :player="player" class="properties"></sets>

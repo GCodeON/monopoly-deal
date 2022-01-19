@@ -5,7 +5,8 @@
         draggable=".card" 
         v-model="cards" 
         group="card" 
-        :move="checkMove">
+        :move="checkMove"
+        :disabled="!player.active">
 					<div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
