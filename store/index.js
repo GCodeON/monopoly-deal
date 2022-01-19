@@ -1,11 +1,11 @@
 import Vue from 'vue'
 
 export const state = () => ({
-    gameStarted : false,
-    turnCount   : 0,
-    cardCount   : 0,
-    discarded   : [],
-    active      : null,
+    gameStarted  : false,
+    turnCount    : 0,
+    cardCount    : 0,
+    discarded    : [],
+    activePlayer : null,
     players   : [
         {
             hand       : [],
@@ -733,26 +733,26 @@ export const mutations = {
     },
     draw(state, cards) {
         for(var i = 0; i < cards; i++) {
-            state.active.hand.push(state.deck.pop());
+            state.players[state.activePlayer].hand.push(state.deck.pop());
         }
     },
     startGame(state) {
         state.gameStarted = true;
-        // state.active = state.players[1];
+        // state.activePlayer = state.players[1];
         this.commit('setPlayers');
         this.commit('setActive');
     },
     nextTurn(state) {
-        if(state.active.hand.length > 7) {
+        if(state.players[state.activePlayer].hand.length > 7) {
           console.log("player must discard card");  
           alert('Player can only hold up to 7 cards at one time!');
           
         }
+        if(state.players[state.activePlayer].turn == true || state.players[state.activePlayer].turn == null) {
+            state.players[state.activePlayer].turn = false;
+        }
         state.turnCount++;
 
-        if(state.active.turn == true || state.active.turn == null) {
-            state.active.turn = false;
-        }
         this.commit('setActive');
         this.commit('draw', 2);
     },
@@ -763,9 +763,9 @@ export const mutations = {
     },
     setActive(state) {
         let setTurn = state.turnCount % state.players.length;
-        state.active = state.players[setTurn];
+        state.activePlayer = state.players[setTurn].id;
         
-        state.active.turn = true;
+        state.players[state.activePlayer].turn = true;
     },
     updateCount(state) {
         state.cardCount++;        

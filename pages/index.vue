@@ -43,7 +43,7 @@ export default {
 	  'players',
 	  'turnCount',
 	  'discarded',
-	  'active',
+	  'activePlayer',
 	  'cardCount',
 	  'gameStarted'
     ]),
