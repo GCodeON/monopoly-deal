@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 export const state = () => ({
     gameStarted : false,
-    turn        : 0,
+    turnCount   : 0,
     cardCount   : 0,
     discarded   : [],
     active      : null,
@@ -748,7 +748,7 @@ export const mutations = {
           alert('Player can only hold up to 7 cards at one time!');
           
         }
-        state.turn++;
+        state.turnCount++;
 
         if(state.active.turn == true || state.active.turn == null) {
             state.active.turn = false;
@@ -762,8 +762,8 @@ export const mutations = {
         })
     },
     setActive(state) {
-        let turn = state.turn % state.players.length;
-        state.active = state.players[turn];
+        let setTurn = state.turnCount % state.players.length;
+        state.active = state.players[setTurn];
         
         state.active.turn = true;
     },

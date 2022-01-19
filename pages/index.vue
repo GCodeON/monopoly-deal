@@ -41,7 +41,7 @@ export default {
     mapState([
 	  'deck',
 	  'players',
-	  'turn',
+	  'turnCount',
 	  'discarded',
 	  'active',
 	  'cardCount',
