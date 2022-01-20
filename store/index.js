@@ -797,6 +797,9 @@ export const mutations = {
         }, 0);
 
     },
+    updateProperties(state, {value, id}) {
+        state.players[id].properties = value;
+    },
     updateSets(state, {value, id}) {
         state.players[id].sets = value;
     },

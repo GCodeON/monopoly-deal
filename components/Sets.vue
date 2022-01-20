@@ -16,6 +16,16 @@
             v-for="card in cards"
 						:key="card.id"
           >
+          <!-- <draggable 
+            class="property-sets" 
+            draggable=".card" 
+            v-model="sets" 
+            group="card" 
+            ghost-class="ghost-card"
+            :move="checkMove"
+            :animation="200" 
+            :disabled="!player.active"
+          > -->
 						<span class="corner top">
 							{{ card.value}}
 						</span>
@@ -25,6 +35,7 @@
 						<span class="corner bottom">
 							{{ card.value }}
 						</span>
+            <!-- </draggable> -->
 					</div>
 			</draggable>
     </div>
@@ -51,6 +62,14 @@ export default {
   },
   computed: {
     cards: {
+      get() {
+        return this.$store.state.players[this.player.id].properties;
+      },
+      set(value) {
+        this.$store.commit('updateProperties', { value: value, id: this.player.id})
+      }
+    },
+    sets: {
       get() {
         return this.$store.state.players[this.player.id].sets;
       },
