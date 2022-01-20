@@ -806,9 +806,26 @@ export const mutations = {
     },
     validateRent(state, {action}) {
         console.log('action desc', action)
-        state.players[state.active].sets.map(() => {
+        // state.players[state.active].sets.map(() => {
 
-        } )
+        // } )
+    },
+    chargePlayers(state, { charge }) {
+        const playersCharged = state.players.filter((player) => {
+            return player.id !== state.activePlayer;
+        })
+        console.log('chargedPlayers', playersCharged);
+
+        // chargedPlayers.map((player) => {
+        //     player.
+        // })
+
+        //each player must pay >= charged amount 
+        //if charged player doesn't have enough money, they must pay with property as well
+        //select money or property cards, or money and property cards
+        // calculate the selected cards total monetary value
+        // validate if the selected cards to charged player satisfies the charged amount
+        //if so, then transfer selected cards to the player charging 
     }
 }
 
@@ -832,16 +849,21 @@ export const actions = {
         context.commit('checkCount');
     },
     onAction(context, action) {
-        // console.log('action', action);
+        console.log('action', action);
 
-        if(action.title == 'Pass Go') {
-            context.commit('draw', 2);
+        switch(action.title) {
+            case 'Pass Go':
+                context.commit('draw', 2);
+            break
+            case 'Rent':
+                console.log("get rent", action);
+                context.commit('validateRent', action);
+            break;
+            case `It's your birthday`:
+                console.log('all players must pay 2m');
+                this.commit('chargePlayers', action.value);
+            break;
         }
-        if(action.title == 'Rent') {
-            console.log("get rent", action);
-            context.commit('validateRent', action);
-        }
-        // context.commit('onAction');
     }
     
 }
