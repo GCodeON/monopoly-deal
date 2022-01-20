@@ -78,7 +78,7 @@ export default {
 			if(event.to.className === 'discard-stack') {
 				console.log("hand to discard", event);
 				if(event.draggedContext.element.type === 'action') {
-					console.log("not an action card");
+					// console.log("not an action card");
 					alert(event.draggedContext.element.description);
 					// execute action
 					this.onAction(event.draggedContext.element);
@@ -92,9 +92,9 @@ export default {
 					return false;
 				}
 			}
-			if(event.to.className === 'sets-stack') { 
+			if(event.to.className === 'property-sets') { 
 				if(event.draggedContext.element.type === 'money' || event.draggedContext.element.type === 'action') {
-					console.log("no property in the bank");
+					console.log("no money or action card in property field");
 					return false;
 				}
 			}
@@ -103,7 +103,7 @@ export default {
 	},
 	onStart(evt) {
 		console.log("on start", evt);
-	}
+	},
 
   }
 };

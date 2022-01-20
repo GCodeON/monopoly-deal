@@ -743,6 +743,8 @@ export const mutations = {
         this.commit('setActive');
     },
     nextTurn(state) {
+        this.commit('resetPlayedCount');
+
         if(state.players[state.activePlayer].hand.length > 7) {
           console.log("player must discard card");  
           alert('Player can only hold up to 7 cards at one time!');
@@ -767,15 +769,18 @@ export const mutations = {
         
         state.players[state.activePlayer].active = true;
     },
-    updateCount(state) {
+    updatePlayedCount(state) {
         state.cardCount++;        
+    },
+    resetPlayedCount(state) {
+        state.cardCount = 0;
     },
     checkCount(state) {
         if(state.cardCount >= 2) {
+            alert(`3 cards played, it's now your opponents turn`)
             this.commit("nextTurn");
-            state.cardCount = 0;
         } else {
-            this.commit('updateCount');
+            this.commit('updatePlayedCount');
         }
     },
     updateHand(state, {value, id}) {
@@ -795,6 +800,12 @@ export const mutations = {
     playCard(state, {value} ) {
         console.log("card played", value);
         state.discarded = value
+    },
+    validateRent(state, {action}) {
+        console.log('action desc', action)
+        state.players[state.active].sets.map(() => {
+
+        } )
     }
 }
 
@@ -818,13 +829,14 @@ export const actions = {
         context.commit('checkCount');
     },
     onAction(context, action) {
-        console.log('action', context, action);
+        // console.log('action', action);
 
         if(action.title == 'Pass Go') {
             context.commit('draw', 2);
         }
         if(action.title == 'Rent') {
-            console.log("get rent");
+            console.log("get rent", action);
+            context.commit('validateRent', action);
         }
         // context.commit('onAction');
     }

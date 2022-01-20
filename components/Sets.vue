@@ -1,7 +1,7 @@
 <template>
     <div class="sets">
 			<draggable 
-        class="sets-stack" 
+        class="property-sets" 
         draggable=".card" 
         v-model="cards" 
         group="card" 
@@ -78,9 +78,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .sets-container {
+  .property-sets {
     display: flex;
     width: 100%;
+    min-height: 125px;
   }
 
 </style>

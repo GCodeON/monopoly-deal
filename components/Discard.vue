@@ -1,7 +1,12 @@
 <template>
     <div class="discard">
       <div class="stack">
-        <draggable group="card" class="discard-stack" draggable=".card"  v-model="cards" :move="checkMove">
+        <draggable 
+          group="card" 
+          class="discard-stack" 
+          draggable=".card"  
+          v-model="cards" 
+          :move="checkMove">
           <div v-for="(card, index) in cards"
 						:key="index"
 						class="card"
@@ -64,11 +69,14 @@ export default {
     position         : relative;
     margin           : 0 auto;
     // display          : flex;
-    background-color : white;
-    border           : 1px solid black;
-    border-radius    : 25px;
-    max-width            : 200px;
-    height           : 200px;
+    // background-color : white;
+    // border           : 1px solid black;
+    // border-radius    : 25px;
+    // max-width            : 200px;
+    // height           : 200px;
+    width: 100%;
+    min-height: 120px;
+    text-align: center;
 
     .card {
       position: absolute;
