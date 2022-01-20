@@ -716,6 +716,9 @@ export const getters = {
 
 export const mutations = {
     shuffleDeck(state) {
+        state.deck.map((item, index)=> {
+            item.id = index + 1;
+        })
         for(let i = state.deck.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * i);
             

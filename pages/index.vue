@@ -76,3 +76,17 @@ export default {
 		grid-area: opponent;
 	}
 </style>
+
+<style lang="scss">
+.ghost-card {
+	opacity    : 0.5;
+	background : #F7FAFC;
+	border     : 1px solid #4299e1;
+}
+.flip-list-move {
+  transition: transform 2.5s;
+}
+.no-move {
+  transition: transform 0s;
+}
+</style>

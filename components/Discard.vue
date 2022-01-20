@@ -6,11 +6,14 @@
           class="discard-stack" 
           draggable=".card"  
           v-model="cards" 
-          :move="checkMove">
-          <div v-for="(card, index) in cards"
-						:key="index"
-						class="card"
-						:class="card.color">
+          :move="checkMove"
+        >
+          <div 
+          	class="card"
+						:class="card.color"
+            v-for="card in cards"
+						:key="card.id"
+          >
 						<span class="corner top" v-if="card.value">
 							{{ card.value}}
 						</span>

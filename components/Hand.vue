@@ -7,21 +7,24 @@
 				draggable=".card" 
 				v-model="cards" 
 				:move="checkMove"
-				:disabled="!player.active">
-					<div v-for="(card, index) in cards"
-						:key="index"
-						class="card"
-						:class="card.color">
-						<span class="corner top">
-							{{ card.value}}
-						</span>
-						<span class="center" v-if="card.type">
-							{{ card.type }}
-						</span>
-						<span class="corner bottom" >
-							{{ card.value }}
-						</span>
-					</div>
+				:disabled="!player.active"
+			>
+				<div	
+					class="card"
+					:class="card.color"
+					v-for="card in cards"
+					:key="card.id"
+				>
+					<span class="corner top">
+						{{ card.value}}
+					</span>
+					<span class="center" v-if="card.type">
+						{{ card.type }}
+					</span>
+					<span class="corner bottom" >
+						{{ card.value }}
+					</span>
+				</div>
 			</draggable>
           <!-- </div> -->
       </div>
