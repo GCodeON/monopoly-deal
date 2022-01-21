@@ -862,6 +862,13 @@ export const mutations = {
     },
     updateMoveType(state, move) {
         state.moveType = move;
+    },
+    addSet(state, {property, id}) {
+        console.log('add new property set', property, id);
+        state.players[id].sets.push([property]);
+    },
+    updateSet(state, {property, id }) {
+        console.log('add to property stack', property, id);
     }
 }
 
@@ -903,6 +910,5 @@ export const actions = {
     },
     updateMoveType(context) {
         context.commit('updateMoveType');
-    }
-    
+    },
 }

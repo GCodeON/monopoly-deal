@@ -52,7 +52,6 @@ export default {
 	
   },
   computed: {
-
 	cards: {
 		get() {
 			return this.$store.state.players[this.player.id].hand;
@@ -61,8 +60,6 @@ export default {
 			this.$store.commit('updateHand', { value: value, id: this.player.id})
 		}
 	}
-
-
   },
   methods: {
 	...mapActions([
@@ -101,11 +98,8 @@ export default {
 					return false;
 				}
 			}
-			if(event.to.className === 'property-sets') { 
-				this.$store.commit('updateMoveType', 'property-set')
-			}
-			if(event.to.className === 'property-stack') {
-				this.$store.commit('updateMoveType', 'property-stack')
+			if(event.to.className === 'property-sets' || event.to.className === 'property-stack' ) { 
+				this.$store.commit('updateMoveType', event.to.className)
 			}
 		} 
 		this.onTurn();

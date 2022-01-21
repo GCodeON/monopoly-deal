@@ -78,14 +78,15 @@ export default {
       },
       set(value) {
         console.log('property set update', value)
+        let property = value.pop();
         switch(this.moveType) {
           case 'property-stack':
             // add to property stack
-            console.log('add to property stack');
+            this.$store.commit('updateSet', {property: property, id: this.player.id});
           break
-          case 'property-set':
+          case 'property-sets':
             // add new property set
-            console.log('add new property set');
+            this.$store.commit('addSet', {property: property, id: this.player.id});
           break
         }
       }
