@@ -95,19 +95,17 @@ export default {
 					return false;
 				}
 			}
-			if(event.to.className === 'property-sets') { 
-				console.log('new property set', event);
-				// this.newSet({set: event.draggedContext.element, id: this.player.id} )
-				// this.$store.commit('newSet', { card: event.draggedContext.element, id: this.player.id})
-
-				if(event.draggedContext.element.type === 'money' || event.draggedContext.element.type === 'action') {
+			if(event.draggedContext.element.type === 'money' || event.draggedContext.element.type === 'action') {
+				if(event.to.className === 'property-sets' || event.to.className === 'property-stack') {
 					console.log("no money or action card in property field");
 					return false;
 				}
 			}
+			if(event.to.className === 'property-sets') { 
+				this.$store.commit('updateMoveType', 'property-set')
+			}
 			if(event.to.className === 'property-stack') {
-				console.log('add to property stack', event);
-
+				this.$store.commit('updateMoveType', 'property-stack')
 			}
 		} 
 		this.onTurn();

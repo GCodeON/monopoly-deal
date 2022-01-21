@@ -10,8 +10,10 @@
         :animation="200" 
         :disabled="!player.active"
       >
-        <div class="stack-container" v-for="(set, idx) in sets" :key="idx">
+        <!-- <div class="stack-container" > -->
           <draggable 
+          v-for="(set, idx) in sets" :key="idx"
+          v-model="sets"
           class="property-stack" 
           draggable=".card" 
           group="card" 
@@ -37,7 +39,7 @@
 						</span>
 					</div>
         </draggable>
-        </div>
+        <!-- </div> -->
         
 			</draggable>
     </div>
@@ -55,50 +57,58 @@ export default {
   },
   data() {
     return {
-      enabled: true
-      
+
     };
   },
   mounted() {
    
   },
   computed: {
-    // cards: {
-    //   get() {
-    //     return this.$store.state.players[this.player.id].properties;
-    //   },
-    //   set(value) {
-    //     this.$store.commit('updateProperties', { value: value, id: this.player.id})
-    //   }
-    // },
+    moveType: {
+      get() {
+        return this.$store.state.moveType;
+      },
+      set(value) {
+
+      }
+    },
     sets: {
       get() {
         return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
-        this.$store.commit('newSet', { properties: value, id: this.player.id})
+        console.log('property set update', value)
+        switch(this.moveType) {
+          case 'property-stack':
+            // add to property stack
+            console.log('add to property stack');
+          break
+          case 'property-set':
+            // add new property set
+            console.log('add new property set');
+          break
+        }
       }
-    }
+    },
   },
   methods: {
-    // ...mapActions([
-    // ]),
-
     checkMove(event) {
-
-      if (event.from.className === 'drag-bank') {
+      console.log('check set event', event);
+      if (event.from.className === 'property-sets' || event.from.className === 'property-stack') {
         if(event.to.className === 'check-hand') {
-          console.log("no bank to hand");
+          console.log("no property to hand");
           return false;
         }
         if(event.to.className === 'discard-stack') {
-          console.log("no bank to discard");
+          console.log("no property to discard");
           return false;
         }
+        if(event.to.className === 'property-stack') {
+          console.log('update move to property stack');
+          this.$store.commit('updateMoveType', 'property-stack')
+        }
       } 
-
     },
-
   }
 };
 </script>

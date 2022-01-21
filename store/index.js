@@ -6,6 +6,7 @@ export const state = () => ({
     cardCount    : 0,
     discarded    : [],
     activePlayer : null,
+    moveType: null,
     players   : [
         {
             hand      : [],
@@ -824,17 +825,14 @@ export const mutations = {
         }, 0);
 
     },
-    updateProperties(state, {value, id}) {
-        state.players[id].properties = value;
-    },
-    newSet(state, {properties, id}) {
+    // newSet(state, {properties, id}) {
+    //     let newSet = [properties[properties.length -1]]
+    //     state.players[id].sets.push(newSet);
+    // },
+    updateProperties(state, {properties, id}) {
         let newSet = [properties[properties.length -1]]
         state.players[id].sets.push(newSet);
     },
-    // updateSets(state, {set, id}) {
-    //     console.log('add property set', set);
-    //     state.players[id].sets.push = [set];
-    // },
     playCard(state, {value} ) {
         console.log("card played", value);
         state.discarded = value
@@ -861,6 +859,9 @@ export const mutations = {
         // calculate the selected cards total monetary value
         // validate if the selected cards to charged player satisfies the charged amount
         //if so, then transfer selected cards to the player charging 
+    },
+    updateMoveType(state, move) {
+        state.moveType = move;
     }
 }
 
@@ -900,5 +901,8 @@ export const actions = {
             break;
         }
     },
+    updateMoveType(context) {
+        context.commit('updateMoveType');
+    }
     
 }
