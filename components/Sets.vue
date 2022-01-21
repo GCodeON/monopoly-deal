@@ -3,29 +3,29 @@
 			<draggable 
         class="property-sets" 
         draggable=".card" 
-        v-model="cards" 
+        v-model="sets" 
         group="card" 
         ghost-class="ghost-card"
         :move="checkMove"
         :animation="200" 
         :disabled="!player.active"
       >
+        <div class="stack-container" v-for="(set, idx) in sets" :key="idx">
+          <draggable 
+          class="property-stack" 
+          draggable=".card" 
+          group="card" 
+          ghost-class="ghost-card"
+          :move="checkMove"
+          :animation="200" 
+          :disabled="!player.active"
+        >
 					<div 
           	class="card"
             :class="card.color"
-            v-for="card in cards"
+            v-for="card in set"
 						:key="card.id"
           >
-          <!-- <draggable 
-            class="property-sets" 
-            draggable=".card" 
-            v-model="sets" 
-            group="card" 
-            ghost-class="ghost-card"
-            :move="checkMove"
-            :animation="200" 
-            :disabled="!player.active"
-          > -->
 						<span class="corner top">
 							{{ card.value}}
 						</span>
@@ -35,8 +35,10 @@
 						<span class="corner bottom">
 							{{ card.value }}
 						</span>
-            <!-- </draggable> -->
 					</div>
+        </draggable>
+        </div>
+        
 			</draggable>
     </div>
 </template>
@@ -61,20 +63,20 @@ export default {
    
   },
   computed: {
-    cards: {
-      get() {
-        return this.$store.state.players[this.player.id].properties;
-      },
-      set(value) {
-        this.$store.commit('updateProperties', { value: value, id: this.player.id})
-      }
-    },
+    // cards: {
+    //   get() {
+    //     return this.$store.state.players[this.player.id].properties;
+    //   },
+    //   set(value) {
+    //     this.$store.commit('updateProperties', { value: value, id: this.player.id})
+    //   }
+    // },
     sets: {
       get() {
         return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
-        this.$store.commit('updateSets', { value: value, id: this.player.id})
+        this.$store.commit('newSet', { properties: value, id: this.player.id})
       }
     }
   },
@@ -106,6 +108,10 @@ export default {
     display: flex;
     width: 100%;
     min-height: 125px;
+  }
+  .property-stack {
+    display: flex;
+    flex-direction: column;
   }
 
 </style>

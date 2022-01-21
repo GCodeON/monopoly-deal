@@ -8,21 +8,48 @@ export const state = () => ({
     activePlayer : null,
     players   : [
         {
-            hand       : [],
-            properties : [],
-            money      : [],
-            name       : [],
-            sets       : [],
-            bankTotal  : '0',
-            active     : null,
-            role       : 'opponent'
+            hand      : [],
+            money     : [],
+            name      : [],
+            sets      : [],
+            bankTotal : '0',
+            active    : null,
+            role      : 'opponent'
         },
         {
             hand       : [],
-            properties : [],
             money      : [],
             name       : [],
-            sets       : [],
+            sets       : [
+                [
+                    {
+                        value       : 2,
+                        type        : 'property',
+                        title       : 'Water Utility',
+                        color       : 'lime',
+                        completeSet : 2,
+                        rent        : [1, 2]
+                    },
+                    {
+                        value       : 2,
+                        type        : 'property',
+                        title       : 'Water Utility',
+                        color       : 'blue',
+                        completeSet : 2,
+                        rent        : [1, 2]
+                    }
+                ],
+                [
+                    {
+                        value       : 2,
+                        type        : 'property',
+                        title       : 'Water Utility',
+                        color       : 'red',
+                        completeSet : 2,
+                        rent        : [1, 2]
+                    }
+                ]
+            ],
             bankTotal  : '0',
             active     : null,
             role       : 'user'
@@ -800,9 +827,14 @@ export const mutations = {
     updateProperties(state, {value, id}) {
         state.players[id].properties = value;
     },
-    updateSets(state, {value, id}) {
-        state.players[id].sets = value;
+    newSet(state, {properties, id}) {
+        let newSet = [properties[properties.length -1]]
+        state.players[id].sets.push(newSet);
     },
+    // updateSets(state, {set, id}) {
+    //     console.log('add property set', set);
+    //     state.players[id].sets.push = [set];
+    // },
     playCard(state, {value} ) {
         console.log("card played", value);
         state.discarded = value
@@ -848,7 +880,7 @@ export const actions = {
     nextTurn(context) {
         context.commit('nextTurn');
     },
-    onTurn(context, event) {
+    onTurn(context) {
         context.commit('checkCount');
     },
     onAction(context, action) {
@@ -867,6 +899,6 @@ export const actions = {
                 this.commit('chargePlayers', action.value);
             break;
         }
-    }
+    },
     
 }
