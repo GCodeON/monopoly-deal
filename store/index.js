@@ -6,8 +6,8 @@ export const state = () => ({
     cardCount    : 0,
     discarded    : [],
     activePlayer : null,
-    moveType     : null,
-    currentEvent : null,
+    eventType    : null,
+    eventItem    : null,
     players   : [
         {
             hand      : [],
@@ -30,7 +30,8 @@ export const state = () => ({
                         title       : 'Water Utility',
                         color       : 'lime',
                         completeSet : 2,
-                        rent        : [1, 2]
+                        rent        : [1, 2],
+                        id          : 107
                     },
                     {
                         value       : 2,
@@ -38,7 +39,8 @@ export const state = () => ({
                         title       : 'Water Utility',
                         color       : 'blue',
                         completeSet : 2,
-                        rent        : [1, 2]
+                        rent        : [1, 2],
+                        id          : 108
                     }
                 ],
                 [
@@ -48,7 +50,8 @@ export const state = () => ({
                         title       : 'Water Utility',
                         color       : 'red',
                         completeSet : 2,
-                        rent        : [1, 2]
+                        rent        : [1, 2],
+                        id          : 109
                     }
                 ]
             ],
@@ -745,9 +748,9 @@ export const getters = {
 
 export const mutations = {
     shuffleDeck(state) {
-        state.deck.map((item, index)=> {
-            item.id = index + 1;
-        })
+        // state.deck.map((item, index)=> {
+        //     item.id = index + 1;
+        // })
         for(let i = state.deck.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * i);
             
@@ -755,6 +758,7 @@ export const mutations = {
             Vue.set(state.deck, i, state.deck[randomIndex]);
             Vue.set(state.deck, randomIndex, temp);
           }
+
     },
     initialDeal(state) {
         for(var i = 0; i < 5; i++) {
@@ -861,12 +865,9 @@ export const mutations = {
         // validate if the selected cards to charged player satisfies the charged amount
         //if so, then transfer selected cards to the player charging 
     },
-    updateMoveType(state, move) {
-        state.moveType = move;
-
-    },
-    onEvent(state, event) {
-        state.currentEvent = event;
+    onEvent(state, {move, item}) {
+        state.eventType = move;
+        state.eventItem = item;
     },
     addSet(state, {property, id}) {
         console.log('add new property set', property, id);

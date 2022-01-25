@@ -100,8 +100,8 @@ export default {
 				}
 			}
 			if(event.to.className === 'property-sets' || event.to.className === 'property-stack' ) { 
-				// this.$store.commit('onEvent', event);
-				this.$store.commit('updateMoveType', event.to.className)
+				this.$store.commit('onEvent', {move: event.to.className, item: event.draggedContext});
+				// this.$store.commit('updateMoveType', event.to.className)
 			}
 		} 
 		this.onTurn();

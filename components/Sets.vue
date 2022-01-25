@@ -24,9 +24,10 @@
           :disabled="!player.active"
         >
 					<div 
-          	class="card"
-            :class="card.color"
             v-for="card in set"
+            class="card"
+            :class="card.color"
+            :id="`${card.id}`"
 						:key="card.id"
           >
 						<span class="corner top">
@@ -67,7 +68,15 @@ export default {
   computed: {
     moveType: {
       get() {
-        return this.$store.state.moveType;
+        return this.$store.state.eventType;
+      },
+      set(value) {
+
+      }
+    },
+    moveItem: {
+      get() {
+        return this.$store.state.eventItem;
       },
       set(value) {
 
@@ -81,14 +90,13 @@ export default {
         switch(this.moveType) {
           case 'property-stack':
             // add to property stack
-            console.log('stack to stack move', value);
+            console.log('stack to stack move', this.moveItem);
             // this.$store.commit('updateSet', {property: property, id: this.player.id});
           break
           case 'property-sets':
             // add new property set
-            console.log('add new property set', value);
-            // let newSet = value.draggedContext.element[0];
-            // this.$store.commit('addSet', {property: newSet, id: this.player.id});
+            console.log('new set', this.moveItem);
+            // this.$store.commit('addSet', {property: this.moveItem.element, id: this.player.id});
           break
         }
       }
@@ -115,10 +123,10 @@ export default {
       if(event.from.className === 'property-stack') {
         if(event.to.className === 'property-sets') {
           console.log('stack to new set');
-          this.$store.commit('updateMoveType', 'property-sets');
+         	this.$store.commit('onEvent', {move: event.to.className, item: event.draggedContext});
         } else {
           console.log('stack to stack');
-          this.$store.commit('updateMoveType', 'property-stack');
+          // this.$store.commit('updateMoveType', 'property-stack');
         }
       }
     },

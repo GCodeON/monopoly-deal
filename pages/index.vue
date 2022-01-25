@@ -46,7 +46,8 @@ export default {
 		'discarded',
 		'activePlayer',
 		'cardCount',
-		'eventContext'
+		'eventType',
+		'eventItem'
     ]),
   methods: {
     ...mapActions([
