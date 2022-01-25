@@ -863,6 +863,7 @@ export const mutations = {
     },
     updateMoveType(state, move) {
         state.moveType = move;
+
     },
     onEvent(state, event) {
         state.currentEvent = event;
@@ -911,8 +912,5 @@ export const actions = {
                 this.commit('chargePlayers', action.value);
             break;
         }
-    },
-    updateMoveType(context, {payload}) {
-        context.commit('updateMoveType');
-    },
+    }
 }

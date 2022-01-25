@@ -32,28 +32,29 @@ export default {
     };
   },
   mounted() {
-	  this.shuffle();
-      this.start();
-	  this.deal();
-	  this.nextTurn();
+		this.shuffle();
+		this.start();
+		this.deal();
+		this.nextTurn();
   },
   computed:
-    mapState([
-	  'deck',
-	  'players',
-	  'turnCount',
-	  'discarded',
-	  'activePlayer',
-	  'cardCount',
-	  'gameStarted'
+    mapState([	  
+		'gameStarted',
+		'deck',
+		'players',
+		'turnCount',
+		'discarded',
+		'activePlayer',
+		'cardCount',
+		'eventContext'
     ]),
   methods: {
     ...mapActions([
-      'shuffle',
-      'deal',
-	  'draw',
-	  'start',
-	  'nextTurn'
+		'shuffle',
+		'deal',
+		'draw',
+		'start',
+		'nextTurn'
 	])
   }
 };

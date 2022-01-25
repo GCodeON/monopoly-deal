@@ -15,6 +15,7 @@
           v-for="(set, idx) in sets" :key="idx"
           v-model="sets"
           class="property-stack" 
+          :id="`set-${idx}`"
           draggable=".card" 
           group="card" 
           ghost-class="ghost-card"
@@ -77,15 +78,17 @@ export default {
         return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
-        let property = value.pop();
         switch(this.moveType) {
           case 'property-stack':
             // add to property stack
-            this.$store.commit('updateSet', {property: property, id: this.player.id});
+            console.log('stack to stack move', value);
+            // this.$store.commit('updateSet', {property: property, id: this.player.id});
           break
           case 'property-sets':
             // add new property set
-            this.$store.commit('addSet', {property: property, id: this.player.id});
+            console.log('add new property set', value);
+            // let newSet = value.draggedContext.element[0];
+            // this.$store.commit('addSet', {property: newSet, id: this.player.id});
           break
         }
       }
@@ -103,12 +106,19 @@ export default {
           console.log("no property to discard");
           return false;
         }
+        if(event.to.className === 'drag-bank') {
+          console.log("no property to bank");
+          return false;
+        }
 
       } 
       if(event.from.className === 'property-stack') {
-        if(event.to.className === 'property-stack') {
+        if(event.to.className === 'property-sets') {
+          console.log('stack to new set');
+          this.$store.commit('updateMoveType', 'property-sets');
+        } else {
           console.log('stack to stack');
-          // this.$store.commit('updateMoveType', 'property-stack');
+          this.$store.commit('updateMoveType', 'property-stack');
         }
       }
     },
