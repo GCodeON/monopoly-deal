@@ -6,7 +6,8 @@ export const state = () => ({
     cardCount    : 0,
     discarded    : [],
     activePlayer : null,
-    moveType: null,
+    moveType     : null,
+    currentEvent : null,
     players   : [
         {
             hand      : [],
@@ -863,6 +864,9 @@ export const mutations = {
     updateMoveType(state, move) {
         state.moveType = move;
     },
+    onEvent(state, event) {
+        state.currentEvent = event;
+    },
     addSet(state, {property, id}) {
         console.log('add new property set', property, id);
         state.players[id].sets.push([property]);
@@ -908,7 +912,7 @@ export const actions = {
             break;
         }
     },
-    updateMoveType(context) {
+    updateMoveType(context, {payload}) {
         context.commit('updateMoveType');
     },
 }

@@ -77,7 +77,6 @@ export default {
         return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
-        console.log('property set update', value)
         let property = value.pop();
         switch(this.moveType) {
           case 'property-stack':
@@ -104,11 +103,14 @@ export default {
           console.log("no property to discard");
           return false;
         }
-        if(event.to.className === 'property-stack') {
-          console.log('update move to property stack');
-          this.$store.commit('updateMoveType', 'property-stack')
-        }
+
       } 
+      if(event.from.className === 'property-stack') {
+        if(event.to.className === 'property-stack') {
+          console.log('stack to stack');
+          // this.$store.commit('updateMoveType', 'property-stack');
+        }
+      }
     },
   }
 };

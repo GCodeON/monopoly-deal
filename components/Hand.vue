@@ -52,6 +52,7 @@ export default {
 	
   },
   computed: {
+
 	cards: {
 		get() {
 			return this.$store.state.players[this.player.id].hand;
@@ -99,6 +100,7 @@ export default {
 				}
 			}
 			if(event.to.className === 'property-sets' || event.to.className === 'property-stack' ) { 
+				// this.$store.commit('onEvent', event);
 				this.$store.commit('updateMoveType', event.to.className)
 			}
 		} 
