@@ -22,21 +22,16 @@
 
 export default {
   name: "card",
-  methods: {
-   
-  },
+  props: ['card'],
   components: {
   },
   computed: {
   
   },
-  props: {
-    card: {
-      required : false,
-      type     : Object,
-      default  : null
-    }
+  methods: {
+   
   }
+
 };
 </script>
 

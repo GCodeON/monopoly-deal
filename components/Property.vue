@@ -7,11 +7,16 @@
     @input="emitter"
     :move="checkMove"
   >
-    <div class="property-stack" 
-      :key="card.id" 
-      v-for="card in realValue">
+    <div 
+      class="property-stack" 
+      v-for="card in realValue"
+      :key="card.id"
+    >
       <card :card="card" />
-      <property class="nested" :list="card.sets" />
+      <property 
+        class="nested" 
+        :list="card.sets"
+      />
     </div>
   </draggable>
 </template>
@@ -72,31 +77,20 @@ export default {
 
 
 <style lang="scss" scoped>
-// .item-container {
-//   max-width : 20rem;
-//   margin    : 0;
-// }
-// .item {
-//   padding          : 1rem;
-//   border           : solid black 1px;
-//   background-color : #fefefe;
-//   min-height       : fit-content;
-//   /* padding-bottom   : 50px; */
-// }
-// .item-sub {
-//  margin: 50px;
-// }
   .property-sets {
     display: flex;
     width: 100%;
     justify-content: center;
+    &.nested {
+      border     : dashed black 1px;
+    }
   }
   .property-stack {
     display        : flex;
     flex-direction : column;
-    border         : solid black 1px;
+    // border         : solid black 1px;
   }
   .nested {
-    min-height: 200px;
+    min-height : 150px;
   }
 </style>
