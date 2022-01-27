@@ -1,6 +1,7 @@
 <template>
     <div class="sets">
-			<draggable 
+      <card v-model="sets"></card>
+			<!-- <draggable 
         class="property-sets" 
         draggable=".card" 
         v-model="sets" 
@@ -10,7 +11,7 @@
         :animation="200" 
         :disabled="!player.active"
       >
-        <!-- <div class="stack-container" > -->
+        <div class="stack-container" >
           <draggable 
           v-for="(set, idx) in sets" :key="idx"
           v-model="sets"
@@ -41,21 +42,24 @@
 						</span>
 					</div>
         </draggable>
-        <!-- </div> -->
+        </div>
         
-			</draggable>
+			</draggable> -->
     </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 
+import Card from '~/components/Card'
+
+import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
     'player',
   ],
   components: {
+    Card
   },
   data() {
     return {
@@ -87,19 +91,21 @@ export default {
         return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
-        switch(this.moveType) {
-          case 'property-stack':
-            // add to property stack
-            // console.log('stack to stack move', this.moveItem);
-            // this.$store.commit('toStack', {id: this.player.id});
-            // this.$store.commit('updateSet', {property: property, id: this.player.id});
-          break
-          case 'property-sets':
-            // add new property set
-            console.log('new set', this.moveItem);
-            // this.$store.commit('addSet', {property: this.moveItem.element, id: this.player.id});
-          break
-        }
+        // switch(this.moveType) {
+        //   case 'property-stack':
+        //     // add to property stack
+        //     // console.log('stack to stack move', this.moveItem);
+        //     // this.$store.commit('toStack', {id: this.player.id});
+        //     // this.$store.commit('updateSet', {property: property, id: this.player.id});
+        //   break
+        //   case 'property-sets':
+        //     // add new property set
+        //     console.log('new set', this.moveItem);
+        //     // this.$store.commit('addSet', {property: this.moveItem.element, id: this.player.id});
+        //   break
+        // }
+        console.log('set', value)
+        this.$store.commit('updateSet', { property: value, id: this.player.id });
       }
     },
   },
@@ -130,14 +136,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .property-sets {
-    display: flex;
-    width: 100%;
-    min-height: 125px;
-  }
-  .property-stack {
-    display: flex;
-    flex-direction: column;
-  }
+  // .property-sets {
+  //   display: flex;
+  //   width: 100%;
+  //   // min-height: 125px;
+  // }
+  // .property-stack {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
 
 </style>

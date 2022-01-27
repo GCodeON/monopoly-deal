@@ -13,17 +13,22 @@ export const state = () => ({
             hand      : [],
             money     : [],
             name      : [],
-            sets      : [],
             bankTotal : '0',
             active    : null,
-            role      : 'opponent'
+            role      : 'opponent',
+            sets: [
+                {
+                    sets: [
+
+                    ]
+                }
+            ]
         },
         {
             hand       : [],
             money      : [],
             name       : [],
             sets       : [
-                [
                     {
                         value       : 2,
                         type        : 'property',
@@ -31,10 +36,34 @@ export const state = () => ({
                         color       : 'red',
                         completeSet : 2,
                         rent        : [1, 2],
-                        id          : 109
-                    }
-                ],
-                [
+                        id          : 107,
+                        sets: [
+                            {
+                                value       : 2,
+                                type        : 'property',
+                                title       : 'Water Utility',
+                                color       : 'lime',
+                                completeSet : 2,
+                                rent        : [1, 2],
+                                id          : 108,
+                                sets: [
+
+                                ]
+                            },
+                            {
+                                value       : 2,
+                                type        : 'property',
+                                title       : 'Water Utility',
+                                color       : 'blue',
+                                completeSet : 2,
+                                rent        : [1, 2],
+                                id          : 109,
+                                sets: [
+
+                                ]
+                            }
+                        ]
+                    },
                     {
                         value       : 2,
                         type        : 'property',
@@ -42,7 +71,10 @@ export const state = () => ({
                         color       : 'lime',
                         completeSet : 2,
                         rent        : [1, 2],
-                        id          : 107
+                        id          : 110,
+                        sets: [
+
+                        ]
                     },
                     {
                         value       : 2,
@@ -51,9 +83,11 @@ export const state = () => ({
                         color       : 'blue',
                         completeSet : 2,
                         rent        : [1, 2],
-                        id          : 108
+                        id          : 111,
+                        sets: [
+
+                        ]
                     }
-                ]
             ],
             bankTotal  : '0',
             active     : null,
@@ -748,9 +782,13 @@ export const getters = {
 
 export const mutations = {
     shuffleDeck(state) {
-        // state.deck.map((item, index)=> {
-        //     item.id = index + 1;
-        // })
+        state.deck.map((item, index)=> {
+            item.id = index + 1;
+
+            if(item.type == 'property') {
+                item.sets = [];
+            }
+        })
         for(let i = state.deck.length - 1; i > 0; i--) {
             let randomIndex = Math.floor(Math.random() * i);
             
@@ -873,13 +911,14 @@ export const mutations = {
         console.log('add new property set', property, id);
         state.players[id].sets.push([property]);
     },
-    toStack(state, {id}) {
-        this.players[id].sets.map((item) => {
-            console.log('look at sets', item);
-        })
-    },
+    // toStack(state, {id}) {
+    //     this.players[id].sets.map((item) => {
+    //         console.log('look at sets', item);
+    //     })
+    // },
     updateSet(state, {property, id }) {
-        console.log('add to property stack', property, id);
+        // console.log('add to property stack', property, id);
+        state.players[id].sets = property;
     }
 }
 
@@ -920,3 +959,5 @@ export const actions = {
         }
     }
 }
+
+export const strict = false
