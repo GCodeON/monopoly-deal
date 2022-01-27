@@ -27,7 +27,7 @@
             v-for="card in set"
             class="card"
             :class="card.color"
-            :id="`${card.id}`"
+            :id="`card-${card.id}`"
 						:key="card.id"
           >
 						<span class="corner top">
@@ -74,14 +74,6 @@ export default {
 
       }
     },
-    moveItem: {
-      get() {
-        return this.$store.state.eventItem;
-      },
-      set(value) {
-
-      }
-    },
     sets: {
       get() {
         return this.$store.state.players[this.player.id].sets;
@@ -89,8 +81,10 @@ export default {
       set(value) {
         switch(this.moveType) {
           case 'property-stack':
+            console.log('move stack');
             // add to property stack
-            console.log('stack to stack move', this.moveItem);
+            // console.log('stack to stack move', this.moveItem);
+            // this.$store.commit('toStack', {id: this.player.id});
             // this.$store.commit('updateSet', {property: property, id: this.player.id});
           break
           case 'property-sets':
@@ -118,15 +112,9 @@ export default {
           console.log("no property to bank");
           return false;
         }
-
-      } 
-      if(event.from.className === 'property-stack') {
-        if(event.to.className === 'property-sets') {
-          console.log('stack to new set');
-         	this.$store.commit('onEvent', {move: event.to.className, item: event.draggedContext});
-        } else {
+        if(event.to.className === 'property-stack') {
           console.log('stack to stack');
-          // this.$store.commit('updateMoveType', 'property-stack');
+          this.$store.commit('onEvent', {move: event.to.className});
         }
       }
     },

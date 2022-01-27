@@ -873,6 +873,11 @@ export const mutations = {
         console.log('add new property set', property, id);
         state.players[id].sets.push([property]);
     },
+    toStack(state, {id}) {
+        state.players[id].sets.map((item) => {
+            console.log('look at sets', item);
+        })
+    },
     updateSet(state, {property, id }) {
         console.log('add to property stack', property, id);
     }
