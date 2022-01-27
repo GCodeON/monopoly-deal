@@ -1,6 +1,6 @@
 <template>
     <div class="sets">
-      <card v-model="sets"></card>
+      <property v-model="sets"/>
 			<!-- <draggable 
         class="property-sets" 
         draggable=".card" 
@@ -50,7 +50,7 @@
 
 <script>
 
-import Card from '~/components/Card'
+import Property from '~/components/Property'
 
 import { mapState, mapActions } from 'vuex'
 
@@ -59,7 +59,7 @@ export default {
     'player',
   ],
   components: {
-    Card
+    Property
   },
   data() {
     return {
@@ -70,22 +70,22 @@ export default {
    
   },
   computed: {
-    moveType: {
-      get() {
-        return this.$store.state.eventType;
-      },
-      set(value) {
+    // moveType: {
+    //   get() {
+    //     return this.$store.state.eventType;
+    //   },
+    //   set(value) {
 
-      }
-    },
-    moveItem: {
-      get() {
-        return this.$store.state.eventItem;
-      },
-      set(value) {
+    //   }
+    // },
+    // moveItem: {
+    //   get() {
+    //     return this.$store.state.eventItem;
+    //   },
+    //   set(value) {
 
-      }
-    },
+    //   }
+    // },
     sets: {
       get() {
         return this.$store.state.players[this.player.id].sets;
@@ -136,14 +136,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  // .property-sets {
-  //   display: flex;
-  //   width: 100%;
-  //   // min-height: 125px;
-  // }
-  // .property-stack {
-  //   display: flex;
-  //   flex-direction: column;
-  // }
+
 
 </style>

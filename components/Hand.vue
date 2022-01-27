@@ -104,7 +104,7 @@ export default {
 				// this.$store.commit('updateMoveType', event.to.className)
 			}
 		} 
-		this.onTurn();
+		// this.onTurn();
 	},
 	onStart(evt) {
 		console.log("on start", evt);
