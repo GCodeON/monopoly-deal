@@ -22,7 +22,6 @@
 </template>
 
 <script>
-
 import Card from '~/components/Card';
 
 export default {
@@ -65,10 +64,6 @@ export default {
           console.log("no property to bank");
           return false;
         }
-        if(event.to.className === 'property-stack') {
-          console.log('stack to stack');
-
-        }
       }
     },
   },
@@ -88,7 +83,8 @@ export default {
   .property-stack {
     display        : flex;
     flex-direction : column;
-    // border         : solid black 1px;
+    align-items    : center;
+    margin         : 0 25px;
   }
   .nested {
     min-height : 150px;

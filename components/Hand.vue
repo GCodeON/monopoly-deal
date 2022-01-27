@@ -9,31 +9,20 @@
 				:move="checkMove"
 				:disabled="!player.active"
 			>
-				<div	
-					class="card"
-					:class="card.color"
-					v-for="card in cards"
+				<card 
+					v-for="card in cards" 
+					:card="card" 
 					:key="card.id"
-				>
-					<span class="corner top">
-						{{ card.value}}
-					</span>
-					<span class="center" v-if="card.type">
-						{{ card.type }}
-					</span>
-					<span class="corner bottom" >
-						{{ card.value }}
-					</span>
-				</div>
+				/>
 			</draggable>
           <!-- </div> -->
       </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 
-
+import Card from '~/components/Card';
 
 export default {
   props: [
@@ -41,7 +30,7 @@ export default {
 	'player'
   ],
   components: {
-
+	  Card
   },
   data() {
     return {
@@ -52,7 +41,6 @@ export default {
 	
   },
   computed: {
-
 	cards: {
 		get() {
 			return this.$store.state.players[this.player.id].hand;

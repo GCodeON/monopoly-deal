@@ -34,30 +34,7 @@ export const state = () => ({
                         rent        : [1, 2],
                         id          : 107,
                         sets: [
-                            // {
-                            //     value       : 2,
-                            //     type        : 'property',
-                            //     title       : 'Water Utility',
-                            //     color       : 'lime',
-                            //     completeSet : 2,
-                            //     rent        : [1, 2],
-                            //     id          : 108,
-                            //     sets: [
 
-                            //     ]
-                            // },
-                            // {
-                            //     value       : 2,
-                            //     type        : 'property',
-                            //     title       : 'Water Utility',
-                            //     color       : 'blue',
-                            //     completeSet : 2,
-                            //     rent        : [1, 2],
-                            //     id          : 109,
-                            //     sets: [
-
-                            //     ]
-                            // }
                         ]
                     },
                     {
@@ -781,7 +758,7 @@ export const mutations = {
         state.deck.map((item, index)=> {
             item.id = index + 1;
 
-            if(item.type == 'property') {
+            if(item.type == 'property' || item.type == 'wild') {
                 item.sets = [];
             }
         })

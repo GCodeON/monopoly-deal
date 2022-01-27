@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 
-import Hand from '~/components/Hand'
-import Bank from '~/components/Bank'
-import Sets from '~/components/Sets'
+import Hand from '~/components/Hand';
+import Bank from '~/components/Bank';
+import Sets from '~/components/Sets';
 
 
 export default {

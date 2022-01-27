@@ -10,32 +10,27 @@
           :animation="200" 
           ghost-class="ghost-card"
 				>
-          <div v-for="card in cards"
+         	<card 
+            v-for="card in cards" 
+            :card="card" 
             :key="card.id"
-            class="card"
-            :class="card.color">
-            <span class="corner top" v-if="card.value">
-              {{ card.value}}
-            </span>
-            <span class="center" v-if="card.type">
-              {{ card.type }}
-            </span>
-            <span class="corner bottom" v-if="card.value" >
-              {{ card.value }}
-            </span>
-          </div>
+          />
         </draggable>
     </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 
+import Card from '~/components/Card';
 
 export default {
   props: [
     'player'
   ],
+  components: {
+    Card
+  },
   data() {
     return {
      
