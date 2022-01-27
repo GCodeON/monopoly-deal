@@ -28,6 +28,17 @@ export const state = () => ({
                         value       : 2,
                         type        : 'property',
                         title       : 'Water Utility',
+                        color       : 'red',
+                        completeSet : 2,
+                        rent        : [1, 2],
+                        id          : 109
+                    }
+                ],
+                [
+                    {
+                        value       : 2,
+                        type        : 'property',
+                        title       : 'Water Utility',
                         color       : 'lime',
                         completeSet : 2,
                         rent        : [1, 2],
@@ -41,17 +52,6 @@ export const state = () => ({
                         completeSet : 2,
                         rent        : [1, 2],
                         id          : 108
-                    }
-                ],
-                [
-                    {
-                        value       : 2,
-                        type        : 'property',
-                        title       : 'Water Utility',
-                        color       : 'red',
-                        completeSet : 2,
-                        rent        : [1, 2],
-                        id          : 109
                     }
                 ]
             ],
@@ -874,7 +874,7 @@ export const mutations = {
         state.players[id].sets.push([property]);
     },
     toStack(state, {id}) {
-        state.players[id].sets.map((item) => {
+        this.players[id].sets.map((item) => {
             console.log('look at sets', item);
         })
     },

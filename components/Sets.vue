@@ -74,6 +74,14 @@ export default {
 
       }
     },
+    moveItem: {
+      get() {
+        return this.$store.state.eventItem;
+      },
+      set(value) {
+
+      }
+    },
     sets: {
       get() {
         return this.$store.state.players[this.player.id].sets;
@@ -81,7 +89,6 @@ export default {
       set(value) {
         switch(this.moveType) {
           case 'property-stack':
-            console.log('move stack');
             // add to property stack
             // console.log('stack to stack move', this.moveItem);
             // this.$store.commit('toStack', {id: this.player.id});
@@ -114,7 +121,7 @@ export default {
         }
         if(event.to.className === 'property-stack') {
           console.log('stack to stack');
-          this.$store.commit('onEvent', {move: event.to.className});
+
         }
       }
     },
