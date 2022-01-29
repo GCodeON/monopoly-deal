@@ -890,7 +890,7 @@ export const mutations = {
     //     })
     // },
     updateSet(state, {property, id }) {
-        // console.log('add to property stack', property, id);
+        console.log('add to property stack', property, id);
         state.players[id].sets = property;
     }
 }

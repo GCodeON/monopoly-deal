@@ -5,6 +5,7 @@
     :list="list"
     :value="value"
     @input="emitter"
+    @change="onChange"
     :move="checkMove"
   >
     <div 
@@ -16,6 +17,8 @@
       <property 
         class="nested" 
         :list="card.sets"
+        :child="true"
+        @change="onChange"
       />
     </div>
   </draggable>
@@ -26,7 +29,19 @@ import Card from '~/components/Card';
 
 export default {
   name: "Property",
-  props: ['value', 'list'],
+  props: {
+    value: {
+      required : false,
+      type     : Array,
+      default  : null
+    },
+    list: {
+      required : false,
+      type     : Array,
+      default  : null
+    },
+    child : false
+  },
   components: {
     Card
   },
@@ -48,6 +63,13 @@ export default {
   methods: {
     emitter(value) {
       this.$emit("input", value);
+    },
+    onChange() {
+      if (this.child === true) {
+          this.$emit("change");
+      } else {
+          this.emitter(this.value);
+      }
     },
     checkMove(event) {
       console.log('check set event', event);

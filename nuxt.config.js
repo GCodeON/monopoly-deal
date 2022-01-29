@@ -48,7 +48,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/, 'lodash-es'],
     /*
     ** You can extend webpack config here
     */
