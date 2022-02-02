@@ -73,7 +73,7 @@ export default {
     },
     checkMove(event) {
       console.log('check set event', event);
-      if (event.from.className === 'property-sets' || event.from.className === 'property-stack') {
+      if (event.from.className === 'property-sets' || event.from.className === 'property-sets nested') {
         if(event.to.className === 'check-hand') {
           console.log("no property to hand");
           return false;

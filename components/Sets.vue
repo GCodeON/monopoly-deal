@@ -49,10 +49,10 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { cloneDeep } from 'lodash-es'
 
 import Property from '~/components/Property'
+
+import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [
@@ -88,7 +88,7 @@ export default {
     // },
     sets: {
       get() {
-        return JSON.parse(JSON.stringify(this.$store.state.players[this.player.id].sets));
+        return this.$store.state.players[this.player.id].sets;
       },
       set(value) {
         // switch(this.moveType) {
