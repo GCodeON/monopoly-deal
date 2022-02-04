@@ -49,10 +49,11 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+import { cloneDeep } from 'lodash-es'
 
 import Property from '~/components/Property'
 
-import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [

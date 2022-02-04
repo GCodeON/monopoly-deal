@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { cloneDeep } from 'lodash-es'
 import Card from '~/components/Card';
 
 export default {
