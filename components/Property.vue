@@ -66,11 +66,11 @@ export default {
       this.$emit("input", value);
     },
     onChange() {
-      if (this.child === true) {
-          this.$emit("change");
-      } else {
-          this.emitter(this.value);
-      }
+      // if (this.child === true) {
+      //   this.emitter(this.value);
+      // } else {
+      //     this.emitter(this.value);
+      // }
     },
     checkMove(event) {
       console.log('check set event', event);
